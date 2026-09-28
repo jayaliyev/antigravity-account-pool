@@ -25,36 +25,25 @@ The two quota pools are independent: **Gemini** and **Claude/GPT**. Each has a f
 
 ```mermaid
 flowchart TD
-    A[Open project through dashboard] --> B[Start agy in project folder with local proxy URL]
-    B --> C[CLI sends model request to local proxy]
-    C --> D[Read model ID and quota pool]
-    D --> E[Exclude accounts blocked for this pool]
-    E --> F{Eligible account available?}
-    F -- No --> X[Return quota error to CLI]
-    F -- Yes --> G[Check model quota for candidate accounts]
-    G --> H{Preferred quota known and at or below threshold?}
-    H -- No --> I[Use preferred account]
-    H -- Yes --> J{Another account above threshold?}
-    J -- Yes --> K[Use that account]
-    J -- No --> L[Use unknown or highest remaining fallback]
-    I --> M[Renew token if needed]
-    K --> M
-    L --> M
-    M --> N[Forward original request and model to Google]
-    N --> O{401 response?}
-    O -- Yes --> P[Refresh token and retry once]
-    O -- No --> Q{Individual quota 429?}
-    P --> Q
-    Q -- Yes --> R[Block account for this quota pool until reset]
-    R --> S{Another eligible account?}
-    S -- Yes --> G
-    S -- No --> X
-    Q -- No --> T[Relay response to same CLI window]
-    T --> U{Successful model response?}
-    U -- Yes --> V[Remember account for this quota pool]
-    U -- No --> W[Wait for next CLI request]
-    V --> W
-    W --> C
+    A[Open project through dashboard] --> B[CLI sends model request to local proxy]
+    B --> C[Read model and matching quota pool]
+    C --> D{Preferred account above threshold?}
+    D -- Yes or unknown --> E[Use preferred account]
+    D -- No --> F[Choose eligible account by available quota]
+    F --> G{Account found?}
+    G -- No --> X[Return error to CLI]
+    G -- Yes --> H[Renew token if needed]
+    E --> H
+    H --> I[Forward unchanged model request to Google]
+    I --> J{Google response}
+    J -- 401 --> K[Refresh token and retry once]
+    K --> I
+    J -- Individual quota 429 --> L[Block account for this pool until reset]
+    L --> F
+    J -- Other error --> X
+    J -- Success --> M[Stream response to same CLI window]
+    M --> N[Remember account for this quota pool]
+    N --> B
 ```
 
 The fallback step may select an account whose quota could not be measured, or the account with the highest known remaining quota even if it is below the threshold. If quota readings are unknown for the preferred account, the pool keeps using it until Google responds or a later reading becomes available. The quota retry applies to an individual-quota response **before model output begins**; an already streaming response cannot be replayed safely.
