@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en" data-theme="plum">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="agy-pool-dashboard" content="5"><title>Antigravity Account Pool</title>
+<style>
+:root{color-scheme:dark;font-family:"Segoe UI",Arial,sans-serif;background:#0c1020;color:#eef2ff}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 0 0,#203568,transparent 42%),#0c1020}main{max-width:1420px;margin:auto;padding:32px 28px 64px}h1{font-size:clamp(27px,3.2vw,40px);letter-spacing:-.035em;margin:6px 0}h2{font-size:18px;margin:0}h3{font-size:14px;margin:0}p{color:#aebada;line-height:1.5}.eyebrow{color:#8aa9ff;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase}.topbar,.head,.account-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.topbar{margin-bottom:24px}.lead{margin:6px 0 0;font-size:14px}.connection{display:inline-flex;align-items:center;gap:8px;background:#172237;border:1px solid #3e506b;padding:9px 13px;border-radius:30px;font-size:13px;white-space:nowrap}.dot{width:8px;height:8px;border-radius:50%;background:#e5bc75}.connection[data-state=running] .dot{background:#63d89d}.connection[data-state=stopped] .dot,.connection[data-state=offline] .dot{background:#ff9b82}.connection[data-state=running]{color:#a8e2c1}.notice{border:1px solid #715a39;background:#30291e;color:#ffe0a6;padding:12px 16px;border-radius:12px;margin-bottom:18px;font-size:14px}[hidden]{display:none!important}.overview{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}.summary{padding:18px 22px;border-radius:15px;background:#141e35;border:1px solid #385b82}.summary.other{border-color:#5b477e}.summary strong{display:block;font-size:24px;margin:6px 0 3px;letter-spacing:-.03em}.summary small{color:#a7b7d4}.grid{display:grid;gap:18px;grid-template-columns:minmax(0,1.65fr) minmax(320px,1fr);align-items:start}.panel{background:#151c32;border:1px solid #293553;border-radius:18px;padding:22px;box-shadow:0 12px 32px #0002;min-width:0}.sidebar{display:grid;gap:18px}.head{margin-bottom:16px}.accounts{display:grid;gap:12px}.account{padding:16px;border:1px solid #34415d;border-radius:13px;background:#11182b}.account.active{border-color:#6d9aff}.account-top{align-items:start}.name{font-weight:700;overflow-wrap:anywhere}.email{color:#9baacb;font-size:12px;margin-top:4px;overflow-wrap:anywhere}.quota-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.quota-group{min-width:0;padding:13px 10px;border:1px solid #34415d;border-radius:12px;background:#0e1629}.quota-group.gemini{border-color:#385b82}.quota-group.other{border-color:#5b477e}.quota-title{display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap;min-height:25px;font-size:13px;font-weight:700}.quota-meters{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:12px}.quota-meter{display:grid;justify-items:center;align-content:start;gap:5px;min-width:0;text-align:center}.ring{width:70px;height:70px;border-radius:50%;display:grid;place-items:center;position:relative;background:#33405f}.ring:before{content:"";position:absolute;inset:7px;border-radius:50%;background:#11182b}.ring-value{position:relative;font-size:15px;font-weight:700}.stale .ring{opacity:.48}.stale .quota-foot{color:#e6c68f}.meter-label{color:#b0bdd8;font-size:12px}.reset{color:#92a4c6;font-size:10px;line-height:1.5}.quota-foot{min-height:18px;margin-top:10px;color:#8f9fbe;font-size:11px}.badge{display:inline-block;color:#b8d5ff;background:#2b4670;border-radius:999px;padding:4px 8px;font-size:10px;font-weight:700;white-space:nowrap}.badge.blocked{background:#5a352e;color:#ffcab7}button,select{border:1px solid #435376;border-radius:9px;background:#253758;color:#f1f5ff;padding:9px 12px;font:inherit;font-size:12px;font-weight:600}button{cursor:pointer}button:hover{background:#314974}button:disabled{cursor:not-allowed;opacity:.45}button.primary{background:#83a7ff;color:#07142d;border-color:#a3beff}button.primary:hover{background:#a2bdff}button.ghost{background:transparent}button.danger{color:#ffb4a7;border-color:#804b53}button:focus-visible,input:focus-visible,summary:focus-visible,select:focus-visible{outline:2px solid #a7c0ff;outline-offset:3px}.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.stack{display:grid;gap:11px}label{font-size:13px;color:#c6d1ed}input[type=text],input[type=number]{width:100%;border:1px solid #465575;background:#0e1425;color:#f3f6ff;border-radius:10px;padding:12px;font:inherit;font-size:13px}input[type=number]{width:70px}input[type=checkbox]{accent-color:#83a7ff}.hint{font-size:12px;color:#9dacca;margin:10px 0 0;line-height:1.6}.project-list{display:grid;gap:9px;margin-top:12px}.saved-project{border:1px solid #34415d;padding:12px;border-radius:10px;min-width:0}.project-path{display:block;color:#9dacca;font-size:11px;overflow-wrap:anywhere;margin:4px 0 10px}.section-label{margin:20px 0 5px;font-size:12px;color:#aebddd}.model-info{padding:12px;border:1px solid #34415d;border-radius:10px;margin-top:16px;font-size:12px}.model-info strong{display:block;margin-top:5px;overflow-wrap:anywhere}.message{color:#bcd6ff;margin:0 0 16px;padding:12px 16px;border:1px solid #3b557c;border-radius:12px;font-size:13px}.message.error{color:#ffb4a7;border-color:#804b53}.events{list-style:none;padding:0;margin:0;display:grid;gap:14px}.event{border-left:2px solid #496bb2;padding-left:12px;font-size:12px;color:#c2cde8;line-height:1.6;overflow-wrap:anywhere}.event.switch{border-color:#88c9ac}.event.quota{border-color:#dda886}.event-meta{display:flex;gap:8px;align-items:center;margin-bottom:4px}.time{color:#91a2c5;font-size:11px}details.advanced{margin-top:0}summary{cursor:pointer;color:#c0cce6;font-size:13px;font-weight:600}.advanced-content{display:grid;gap:18px;padding-top:18px}.advanced-content .row{margin-top:10px}.account-menu{position:relative}.account-menu summary{list-style:none;padding:8px;font-size:18px;line-height:14px}.account-menu[open] .menu{position:absolute;right:0;top:34px;z-index:3;display:grid;gap:6px;padding:8px;min-width:125px;background:#1e2943;border:1px solid #435376;border-radius:10px;box-shadow:0 8px 20px #0006}footer{font-size:11px;color:#8393b8;padding:22px 0 0}
+@media(max-width:1040px){.grid{grid-template-columns:1fr}.sidebar{grid-row:1;grid-template-columns:1fr 1fr}.sidebar .advanced{grid-column:1/-1}}@media(max-width:640px){main{padding:22px 14px 40px}.sidebar,.overview{grid-template-columns:1fr}.panel{padding:16px}.quota-groups{grid-template-columns:1fr}.topbar{align-items:start}}
+</style>
+<style>
+/* Dashboard-only palettes. The routing and quota policy remain in the local pool. */
+:root{
+ color-scheme:dark;--bg:#111c1b;--glow:#27443b;--panel:#1b2b28;--card:#172521;--inset:#14211e;
+ --border:#39554d;--strong-border:#63877a;--text:#ebf4ed;--muted:#bbd0c2;--subtle:#9cb8a6;
+ --accent:#a3d6b6;--accent-text:#10251a;--gemini:#a3d6b6;--gemini-week:#6ebcba;
+ --other:#d1b4df;--other-week:#a795d7;--track:#3a5149;--badge-bg:#29453b;
+ --button:#2c4a40;--button-hover:#385d50;--warn:#e9c280;--danger:#efa69e;--shadow:#07120e35;
+}
+:root[data-theme="ocean"]{
+ --bg:#0e1b22;--glow:#174458;--panel:#172b35;--card:#11232c;--inset:#10212a;
+ --border:#335568;--strong-border:#5d91a2;--text:#e8f5f5;--muted:#b5d1d7;--subtle:#91b7c0;
+ --accent:#86d4d4;--accent-text:#102b30;--gemini:#86d4d4;--gemini-week:#83b9e8;
+ --other:#d3b5e2;--other-week:#a5aee9;--track:#365364;--badge-bg:#284859;
+ --button:#285061;--button-hover:#326579;--warn:#e7c58e;--danger:#f0aaa4;--shadow:#07152045;
+}
+:root[data-theme="plum"]{
+ --bg:#1b1721;--glow:#4a3151;--panel:#2a2230;--card:#251e2c;--inset:#211b27;
+ --border:#59465f;--strong-border:#927198;--text:#f6edf4;--muted:#d7c5d7;--subtle:#bfa8c3;
+ --accent:#d9b5d8;--accent-text:#2c1e2d;--gemini:#a9d6c7;--gemini-week:#82bfc2;
+ --other:#d9b5d8;--other-week:#aa9ed7;--track:#5b4760;--badge-bg:#4b3654;
+ --button:#503d57;--button-hover:#634a6d;--warn:#e9c58b;--danger:#efaaa8;--shadow:#120a1745;
+}
+:root[data-theme="midnight"]{
+ --bg:#0c1020;--glow:#203568;--panel:#151c32;--card:#11182b;--inset:#0e1629;
+ --border:#34415d;--strong-border:#6d9aff;--text:#eef2ff;--muted:#c0cce6;--subtle:#9dacca;
+ --accent:#83a7ff;--accent-text:#07142d;--gemini:#72b9ff;--gemini-week:#7ed0ce;
+ --other:#c6a4ff;--other-week:#a5a8fa;--track:#33405f;--badge-bg:#2b4670;
+ --button:#253758;--button-hover:#314974;--warn:#e5bc75;--danger:#ffb4a7;--shadow:#0004;
+}
+:root[data-theme="sand"]{
+ color-scheme:light;--bg:#f2ede3;--glow:#e4d7bf;--panel:#fffaf0;--card:#f9f2e6;--inset:#f4ecdf;
+ --border:#cbbfa9;--strong-border:#806d59;--text:#302c28;--muted:#514b42;--subtle:#665e51;
+ --accent:#526f5a;--accent-text:#fffdf7;--gemini:#52785e;--gemini-week:#618d94;
+ --other:#85668d;--other-week:#746d9d;--track:#d8d1c2;--badge-bg:#e5dcc9;
+ --button:#e8ddca;--button-hover:#dacbb2;--warn:#875b18;--danger:#a3413a;--shadow:#503d2319;
+}
+:root[data-theme="paper"]{
+ color-scheme:light;--bg:#eef1f1;--glow:#d3e0e1;--panel:#fff;--card:#f6f9f9;--inset:#edf3f3;
+ --border:#bccdd0;--strong-border:#537a84;--text:#1c3036;--muted:#3e5960;--subtle:#526e75;
+ --accent:#236b72;--accent-text:#fff;--gemini:#2b7983;--gemini-week:#478e8b;
+ --other:#7b638e;--other-week:#627caa;--track:#d5e0e1;--badge-bg:#e0eced;
+ --button:#dce9eb;--button-hover:#cbdde0;--warn:#875c21;--danger:#a43e43;--shadow:#16394118;
+}
+body{background:radial-gradient(ellipse at 0 0,var(--glow),transparent 46%),var(--bg);color:var(--text)}
+p,.lead,.hint,.meter-label,.section-label,.model-info,.event,.email,.project-path,.quota-foot,.reset,.time,footer,label,summary{color:var(--muted)}
+.eyebrow,.section-label{color:var(--accent)}
+.panel,.summary{background:var(--panel);border-color:var(--border);box-shadow:0 12px 32px var(--shadow)}
+.summary.other{border-color:var(--border)}
+.account{background:var(--card);border-color:var(--border)}.account.active{border-color:var(--strong-border)}
+.quota-group,.saved-project,.model-info{background:var(--inset);border-color:var(--border)}
+.quota-group.gemini,.quota-group.other{border-color:var(--border)}
+.ring{background:var(--track)}.ring:before{background:var(--card)}
+.badge{background:var(--badge-bg);color:var(--text)}.badge.blocked{background:var(--badge-bg);color:var(--danger)}
+button,select{background:var(--button);border-color:var(--border);color:var(--text)}button:hover{background:var(--button-hover)}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-text)}button.primary:hover{background:var(--gemini-week)}
+button.ghost{background:transparent}button.ghost:hover{background:var(--button)}
+button.danger,.message.error{color:var(--danger);border-color:var(--danger)}
+button:focus-visible,input:focus-visible,summary:focus-visible,select:focus-visible{outline-color:var(--accent)}
+input[type=text],input[type=number]{background:var(--inset);border-color:var(--border);color:var(--text)}input[type=checkbox]{accent-color:var(--accent)}
+.connection{background:var(--card);border-color:var(--border);color:var(--muted)}
+.connection[data-state=running]{color:var(--accent)}.connection[data-state=running] .dot{background:var(--accent)}
+.connection[data-state=stopped] .dot,.connection[data-state=offline] .dot{background:var(--danger)}
+.notice{background:var(--card);border-color:var(--warn);color:var(--warn)}
+.message{color:var(--accent);border-color:var(--border)}
+.event{border-color:var(--accent)}.event.switch{border-color:var(--gemini-week)}.event.quota{border-color:var(--warn)}
+.account-menu[open] .menu{background:var(--panel);border-color:var(--border);box-shadow:0 8px 20px var(--shadow)}
+.header-actions{display:flex;align-items:center;justify-content:flex-end;gap:12px;flex-wrap:wrap}
+.theme-picker{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600;white-space:nowrap}
+.theme-picker select{min-width:114px;font-size:12px;padding:9px 11px}
+.overview{align-items:stretch}.summary{padding:20px 22px;min-width:0;--group-color:var(--gemini);--group-week:var(--gemini-week)}
+.summary.other{--group-color:var(--other);--group-week:var(--other-week)}
+.summary-head{display:flex;align-items:start;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.summary-head h2{margin:5px 0 0;font-size:18px}.summary-head .badge{font-size:11px}
+.aggregate-body{display:flex;gap:24px;align-items:center;margin:18px 0 12px;flex-wrap:wrap}
+.aggregate-chart{width:164px;height:164px;flex:none;border-radius:50%;position:relative;display:grid;place-items:center;background:conic-gradient(var(--group-color) 0deg var(--five-deg,0deg),var(--track) var(--five-deg,0deg) 360deg)}
+.aggregate-chart:before{content:"";position:absolute;inset:13px;border-radius:50%;background:var(--panel)}
+.aggregate-inner{position:absolute;inset:23px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--group-week) 0deg var(--week-deg,0deg),var(--track) var(--week-deg,0deg) 360deg)}
+.aggregate-inner:before{content:"";position:absolute;inset:13px;border-radius:50%;background:var(--panel)}
+.aggregate-center{position:relative;text-align:center;line-height:1.1;max-width:84px}
+.aggregate-center strong{font-size:26px;margin:0;color:var(--text)}.aggregate-center span{display:block;margin-top:5px;font-size:10px;color:var(--muted);line-height:1.25}
+.aggregate-stats{display:grid;gap:13px;flex:1;min-width:190px}
+.aggregate-stat{display:grid;grid-template-columns:10px 1fr auto;column-gap:8px;align-items:baseline}
+.aggregate-stat i{width:9px;height:9px;border-radius:3px;background:var(--group-color);align-self:center}.aggregate-stat.week i{background:var(--group-week)}
+.aggregate-stat span{font-size:12px;color:var(--muted)}.aggregate-stat strong{font-size:15px;margin:0;color:var(--text)}
+.aggregate-stat small{grid-column:2/-1;color:var(--subtle);font-size:11px;margin-top:2px}
+.summary-availability{font-size:13px;font-weight:700;color:var(--text);margin-top:6px}
+.summary-detail,.token-note{font-size:11px;line-height:1.5;color:var(--subtle);margin:5px 0 0}
+.token-note{border-top:1px solid var(--border);padding-top:10px;margin-top:11px}
+@media(max-width:640px){.header-actions{justify-content:flex-start}.aggregate-body{gap:14px}.aggregate-chart{width:142px;height:142px}.aggregate-stats{min-width:150px}}
+/* Restrained utility layout: data and controls take priority over decoration. */
+:root{
+ --bg:#191e1b;--panel:#222a24;--card:#222a24;--inset:#1d251f;--border:#3d4940;
+ --text:#e9eee9;--muted:#afbeb1;--subtle:#8d9c90;--accent:#a2b9a6;--accent-text:#18241b;
+ --gemini:#84a98c;--gemini-week:#6f9e98;--other:#ad9bb5;--other-week:#9294b4;
+ --track:#3b463d;--badge-bg:#303b32;--button:#2b362e;--button-hover:#3a473c;
+}
+:root[data-theme="ocean"]{
+ --bg:#171e22;--panel:#222b30;--card:#222b30;--inset:#1c252a;--border:#3a4a51;
+ --text:#eaf0f2;--muted:#adbec5;--subtle:#899da6;--accent:#9fbcc4;--accent-text:#13252b;
+ --gemini:#75a8ae;--gemini-week:#789fb9;--other:#aa9ebc;--other-week:#929ec3;
+ --track:#39484e;--badge-bg:#2d3d44;--button:#293a42;--button-hover:#394b53;
+}
+:root[data-theme="plum"]{
+ --bg:#211d22;--panel:#2b262d;--card:#2b262d;--inset:#241f26;--border:#504650;
+ --text:#f0ebef;--muted:#c4b5c2;--subtle:#a996a7;--accent:#c6b0bf;--accent-text:#2a1d28;
+ --gemini:#99b8a5;--gemini-week:#8aacae;--other:#b89cba;--other-week:#9d9bbb;
+ --track:#504650;--badge-bg:#3b323d;--button:#39303c;--button-hover:#4b3c4c;
+}
+:root[data-theme="midnight"]{
+ --bg:#171a21;--panel:#212630;--card:#212630;--inset:#1b2028;--border:#3a4552;
+ --text:#edf0f4;--muted:#b2becb;--subtle:#8c9baa;--accent:#a4b9d1;--accent-text:#172330;
+ --gemini:#83aabd;--gemini-week:#83a8ac;--other:#ac9dc7;--other-week:#8e9ec1;
+ --track:#3a4653;--badge-bg:#2d3947;--button:#2a3543;--button-hover:#3a4857;
+}
+:root[data-theme="sand"]{
+ --bg:#f3f2ee;--panel:#fdfcf9;--card:#fdfcf9;--inset:#f7f5f0;--border:#d5d3cb;
+ --text:#292e2a;--muted:#5d6860;--subtle:#747e75;--accent:#536d5b;--accent-text:#fff;
+ --gemini:#63816b;--gemini-week:#628b87;--other:#8b7893;--other-week:#7d829b;
+ --track:#e3e2db;--badge-bg:#eeece6;--button:#f4f3ee;--button-hover:#e9e8e1;
+}
+:root[data-theme="paper"]{
+ --bg:#f1f3f3;--panel:#fff;--card:#fff;--inset:#f7f9f9;--border:#d4dfe0;
+ --text:#223036;--muted:#53656b;--subtle:#71848a;--accent:#376c76;--accent-text:#fff;
+ --gemini:#4b8188;--gemini-week:#558e8b;--other:#827894;--other-week:#73849d;
+ --track:#e0e8e8;--badge-bg:#edf2f2;--button:#f5f8f8;--button-hover:#e7eff0;
+}
+body{background:var(--bg)}
+main{max-width:1380px;padding:24px 28px 48px}
+.topbar{padding-bottom:18px;margin-bottom:20px;border-bottom:1px solid var(--border);align-items:center}
+h1{font-size:27px;font-weight:650;letter-spacing:-.025em;margin:0}
+h2{font-size:16px;font-weight:650}
+h3{font-size:13px;font-weight:650}
+.lead{font-size:12px;margin:3px 0 0;color:var(--subtle)}
+.header-actions{gap:20px}
+.theme-picker{font-size:12px;font-weight:500;color:var(--muted)}
+.theme-picker select{min-width:105px;padding:6px 9px;font-size:12px}
+.connection,.connection[data-state=running]{background:none;border:0;border-radius:0;padding:0;color:var(--muted);font-size:12px;font-weight:500}
+.connection[data-state=stopped],.connection[data-state=offline]{color:var(--danger)}
+.connection .dot{display:none}
+.overview{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-bottom:12px}
+.panel,.summary{padding:18px;border-radius:8px;box-shadow:none;background:var(--panel);border:1px solid var(--border)}
+.summary-head{align-items:center}.summary-head h2{margin:0;font-size:15px}
+.coverage{font-size:11px;color:var(--subtle)}
+.aggregate-value{display:flex;align-items:baseline;gap:9px;margin:16px 0 18px}
+.aggregate-value strong{font-size:38px;font-weight:600;line-height:1;letter-spacing:-.045em;margin:0;color:var(--text)}
+.aggregate-value span{font-size:12px;color:var(--muted)}
+.aggregate-chart{width:auto;height:auto;display:grid;place-items:stretch;gap:12px;position:static;border-radius:0;background:none}
+.aggregate-chart:before{content:none}
+.aggregate-row{display:grid;grid-template-columns:56px minmax(0,1fr) 52px;align-items:center;gap:12px;width:100%}
+.aggregate-row>span{font-size:11px;color:var(--muted)}
+.aggregate-row strong{display:block;text-align:right;font-size:12px;font-weight:600;margin:0;color:var(--text)}
+.aggregate-track{height:7px;background:var(--track);border-radius:2px;overflow:hidden}
+.aggregate-fill{display:block;height:100%;width:var(--five-fill,0%);background:var(--group-color)}
+.aggregate-row.week .aggregate-fill{width:var(--week-fill,0%);background:var(--group-week)}
+.summary-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline;border-top:1px solid var(--border);margin-top:18px;padding-top:11px}
+.summary-availability{font-size:12px;margin:0;font-weight:600}
+.summary-detail{font-size:11px;margin:0;color:var(--subtle)}
+.token-note{border:0;padding:0;margin:6px 0 0;font-size:11px;color:var(--subtle)}
+.grid{grid-template-columns:minmax(0,1.8fr) minmax(300px,.82fr);gap:12px}
+.sidebar{gap:12px}
+.head{margin-bottom:12px}
+.accounts{gap:0}
+.account,.account.active{padding:13px 0;border:0;border-bottom:1px solid var(--border);border-radius:0;background:none}
+.account:first-child{padding-top:3px}.account:last-child{border-bottom:0;padding-bottom:0}
+.name{font-size:13px;font-weight:650}.email{font-size:11px;margin-top:2px}
+.quota-groups{gap:0;margin-top:10px;padding-top:9px;border-top:1px solid var(--border)}
+.quota-group,.quota-group.gemini,.quota-group.other{padding:3px 12px 0;border:0;border-left:1px solid var(--border);border-radius:0;background:none}
+.quota-group:first-child{padding-left:0;border-left:0}
+.quota-title{font-size:12px;min-height:18px}
+.quota-meters{gap:13px;margin-top:9px}
+.quota-meter{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 6px;text-align:left;align-items:center;justify-items:stretch}
+.meter-label{font-size:11px;color:var(--muted)}
+.quota-value{font-size:12px;font-weight:600;color:var(--text);text-align:right}
+.quota-track{grid-column:1/-1;height:5px;background:var(--track);border-radius:2px;overflow:hidden}
+.quota-fill{display:block;height:100%;width:0}
+.stale .quota-fill{opacity:.4}
+.reset{grid-column:1/-1;font-size:10px;color:var(--subtle);line-height:1.35}
+.quota-foot{font-size:10px;color:var(--subtle);margin-top:8px;min-height:0}
+.badge{border-radius:4px;padding:3px 6px;font-size:10px;background:var(--badge-bg);color:var(--muted)}
+.badge.blocked{color:var(--danger)}
+button,select{border-radius:6px;padding:7px 10px;font-size:12px;font-weight:550}
+button.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-text)}
+button.primary:hover{background:var(--accent);filter:brightness(1.08)}
+.saved-project,.model-info{background:none;border:1px solid var(--border);border-radius:6px}
+.model-info{padding:10px}
+.event{border-color:var(--border);font-size:11px}.event.switch{border-color:var(--accent)}
+.message,.notice{border-radius:6px;padding:9px 12px;box-shadow:none}
+.account-menu[open] .menu{border-radius:6px;box-shadow:0 7px 20px var(--shadow)}
+@media(max-width:1050px){.grid{grid-template-columns:1fr}.sidebar{grid-row:auto;grid-template-columns:repeat(2,minmax(0,1fr))}.sidebar .advanced{grid-column:1/-1}}
+@media(max-width:720px){main{padding:18px 14px 36px}.overview,.sidebar{grid-template-columns:1fr}.topbar{align-items:start}.header-actions{justify-content:flex-start}.quota-groups{grid-template-columns:1fr}.quota-group,.quota-group.gemini,.quota-group.other{padding:7px 0;border-left:0}.quota-group+.quota-group{border-top:1px solid var(--border);margin-top:6px;padding-top:12px}.sidebar .advanced{grid-column:auto}}
+</style>
+</head>
+<body><main>
+<header class="topbar"><div><h1>Account pool</h1><p class="lead">Antigravity CLI</p></div><div class="header-actions"><label class="theme-picker" for="theme"><span>Theme</span><select id="theme" aria-label="Dashboard theme"><option value="sage">Sage</option><option value="ocean">Ocean</option><option value="plum" selected>Plum</option><option value="midnight">Midnight</option><option value="sand">Sand</option><option value="paper">Paper</option></select></label><div id="connection" class="connection" data-state="connecting" role="status"><span id="connectionText">Connecting</span></div></div></header>
+<div id="connectionNotice" class="notice" role="status" hidden></div><div id="message" class="message" role="status" hidden></div>
+<section class="overview" aria-label="Quota availability">
+<div class="summary"><div class="summary-head"><h2>Gemini</h2><span id="geminiCoverage" class="coverage">Checking…</span></div><div class="aggregate-value" title="Average of each account’s lower 5-hour or weekly remaining quota; blocked accounts count as zero"><strong id="geminiEffective">—</strong><span>available overall</span></div><div id="geminiChart" class="aggregate-chart" role="img" aria-label="Gemini quota chart"><div class="aggregate-row"><span>5 hours</span><div class="aggregate-track"><div class="aggregate-fill five"></div></div><strong id="geminiFive">—</strong></div><div class="aggregate-row week"><span>Weekly</span><div class="aggregate-track"><div class="aggregate-fill"></div></div><strong id="geminiWeek">—</strong></div></div><div class="summary-foot"><span id="geminiAvailable">Checking quotas…</span><span id="geminiSummary">5-hour and weekly limits</span></div><p id="geminiTokens" class="token-note">Exact token total unavailable from quota readings.</p></div>
+<div class="summary other"><div class="summary-head"><h2>Claude / GPT</h2><span id="otherCoverage" class="coverage">Checking…</span></div><div class="aggregate-value" title="Average of each account’s lower 5-hour or weekly remaining quota; blocked accounts count as zero"><strong id="otherEffective">—</strong><span>available overall</span></div><div id="otherChart" class="aggregate-chart" role="img" aria-label="Claude and GPT quota chart"><div class="aggregate-row"><span>5 hours</span><div class="aggregate-track"><div class="aggregate-fill five"></div></div><strong id="otherFive">—</strong></div><div class="aggregate-row week"><span>Weekly</span><div class="aggregate-track"><div class="aggregate-fill"></div></div><strong id="otherWeek">—</strong></div></div><div class="summary-foot"><span id="otherAvailable">Checking quotas…</span><span id="otherSummary">5-hour and weekly limits</span></div><p id="otherTokens" class="token-note">Exact token total unavailable from quota readings.</p></div>
+</section><div class="grid">
+<section class="panel"><div class="head"><h2>Accounts <span id="accountCount" class="badge">0</span></h2><div class="row"><button id="checkQuota" class="ghost" data-online disabled>Refresh quotas</button><button id="add" class="primary" data-online disabled>Add account</button></div></div>
+<p id="quotaWarning" class="hint" hidden></p><div id="accounts" class="accounts"></div><p id="enrollment" class="hint"></p><button id="cancel" class="ghost" data-online hidden>Cancel account login</button></section>
+<div class="sidebar"><section class="panel"><div class="head"><h2>Open a project</h2></div>
+<div class="stack"><label for="project">Project folder</label><input id="project" type="text" placeholder="C:\path\to\project" autocomplete="off"><label class="row"><input id="resume" type="checkbox" checked> Continue latest conversation</label><button id="launch" class="primary" data-online disabled>Open project in Antigravity CLI</button><button id="pinProject" class="ghost">Pin this folder</button></div>
+<p class="hint">Automatic tool approvals. Account switches keep the model and CLI session.</p><div class="model-info">Last requested model<strong id="model">No project prompt yet</strong><span id="group" class="hint"></span></div>
+<div class="section-label">Pinned &amp; recent projects</div><div id="projects" class="project-list"></div><p id="storageNotice" class="hint" hidden></p></section>
+<section class="panel"><div class="head"><h2>Activity</h2><select id="eventFilter" aria-label="Activity filter"><option value="all">All activity</option><option value="switch">Account switches</option><option value="quota">Quota events</option></select></div><ul id="events" class="events"></ul></section>
+<details class="panel advanced"><summary>Advanced settings &amp; diagnostics</summary><div class="advanced-content">
+<div><h3>Early switching</h3><div class="row"><label for="threshold">Switch at</label><input id="threshold" type="number" min="0" max="100" step="1" value="10"><span>% remaining</span><button id="saveThreshold" class="ghost" data-online disabled>Save</button></div><p class="hint">Checked for the model used by each request. 0% disables early switching; quota error retries still work.</p></div>
+<div><h3>Switch tests</h3><p class="hint">After a project prompt, arm a test and send another small prompt in the same CLI. A test uses some quota from the next account.</p><div class="row"><button id="testLow" class="ghost" data-online disabled>Test low quota switch</button><button id="test" class="ghost" data-online disabled>Test quota error retry</button></div></div>
+<div><h3>Account health</h3><p class="hint">Renew the access token for the account serving the last requested model.</p><div class="row"><button id="refresh" class="ghost" data-online disabled>Check token renewal</button></div></div>
+<div><h3>Stop the pool</h3><p class="hint">Open CLI sessions need the pool to send requests. Finish your tasks before stopping it. Use the Desktop shortcut to start again.</p><div class="row"><button id="stop" class="danger" data-online disabled>Stop app</button></div></div>
+</div></details></div></div><footer>Quota figures show remaining capacity. Refreshes every minute. Hover a reset countdown for its exact time.</footer>
+</main>
+<script nonce="__AGY_POOL_KEY__">
+const key = '__AGY_POOL_KEY__';
+let requestKey = key;
+const $ = id => document.getElementById(id), STORAGE = 'agy-pool.projects.v1', THEME_STORAGE = 'agy-pool.theme.v1', STALE_MS = 90000;
+const THEMES = new Set(['sage','ocean','plum','midnight','sand','paper']);
+let current = null, busy = false, connected = false, failures = 0, stopped = false, refreshPending = false;
+let accountStamp = '', projectStamp = '', eventStamp = '';
+let preferences = {path:'',resume:true,projects:[]};
+const el = (tag, cls, text) => { const n=document.createElement(tag); if(cls)n.className=cls;if(text!=null)n.textContent=text;return n; };
+function applyTheme(value,persist=false){
+ const theme=THEMES.has(value)?value:'plum';document.documentElement.dataset.theme=theme;$('theme').value=theme;
+ if(persist)try{localStorage.setItem(THEME_STORAGE,theme);}catch{storageUnavailable();}
+}
+function loadTheme(){try{applyTheme(localStorage.getItem(THEME_STORAGE)||'plum');}catch{applyTheme('plum');}}
+const identity = value => value.replace(/\\/g,'/').replace(/\/+$/,'').toLowerCase();
+function storageUnavailable(){$('storageNotice').hidden=false;$('storageNotice').textContent='Browser storage is unavailable. Project choices will last only for this page.';}
+function loadPreferences(){
+ try{const d=JSON.parse(localStorage.getItem(STORAGE)||'{}');preferences={path:typeof d.path==='string'?d.path:'',resume:d.resume!==false,projects:Array.isArray(d.projects)?d.projects.filter(p=>p&&typeof p.path==='string'&&p.path.trim()).slice(0,40).map(p=>({path:p.path,pinned:!!p.pinned,lastUsed:Number(p.lastUsed)||0})):[]};}catch{storageUnavailable();}
+}
+function savePreferences(){try{localStorage.setItem(STORAGE,JSON.stringify(preferences));}catch{storageUnavailable();}}
+function saveForm(){preferences.path=$('project').value;preferences.resume=$('resume').checked;savePreferences();controls();}
+function rememberProject(path,pin=false){
+ let p=preferences.projects.find(p=>identity(p.path)===identity(path));if(!p){p={path,pinned:false,lastUsed:0};preferences.projects.push(p);}
+ if(pin)p.pinned=true;else p.lastUsed=Date.now();
+ preferences.projects=[...preferences.projects.filter(p=>p.pinned),...preferences.projects.filter(p=>!p.pinned).sort((a,b)=>b.lastUsed-a.lastUsed).slice(0,10)];savePreferences();renderProjects();
+}
+function message(text,error=false){$('message').hidden=!text;$('message').textContent=text;$('message').classList.toggle('error',error);}
+function connection(state){
+ connected=state==='running';$('connection').dataset.state=state;$('connectionText').textContent={running:'Connected',reconnecting:'Reconnecting',offline:'Unavailable',stopped:'Stopped',connecting:'Connecting'}[state];
+ $('connectionNotice').hidden=connected||state==='connecting';
+ $('connectionNotice').textContent=state==='stopped'?'The pool is stopped. Double-click the Desktop shortcut to start it again.':state==='offline'?'Cannot reach the pool. Open the Desktop shortcut if it is stopped. Quota readings below are stale; this page will reconnect automatically.':'Connection interrupted. Retrying automatically; quota readings below are stale.';
+ if(current)render(current);else controls();
+}
+function isStale(a){return !connected||!a.quotaCheckedAt||Date.now()-a.quotaCheckedAt>STALE_MS;}
+function countdown(value){
+ const ms=Date.parse(value)-Date.now();if(!Number.isFinite(ms))return 'Reset time unavailable';if(ms<=0)return 'Reset due · awaiting refresh';
+ const m=Math.ceil(ms/60000),h=Math.floor(m/60),d=Math.floor(h/24);return 'Resets in '+(d?d+'d '+h%24+'h':h?h+'h '+m%60+'m':m+'m');
+}
+function quotaMeter(label,reading,color,threshold){
+ const meter=el('div','quota-meter'),track=el('div','quota-track'),fill=el('span','quota-fill'),v=reading?.percent,p=v==null||!Number.isFinite(Number(v))?null:Math.max(0,Math.min(100,Number(v)));
+ if(p!=null){fill.style.width=p+'%';fill.style.background=p<=threshold?'var(--danger)':color;}
+ track.setAttribute('role','img');track.setAttribute('aria-label',label+': '+(p==null?'quota unavailable':p+'% remaining'));track.append(fill);
+ const reset=el('div','reset',countdown(reading?.resetTime));if(reading?.resetTime){reset.dataset.reset=reading.resetTime;reset.title='Resets '+new Date(reading.resetTime).toLocaleString();}
+ meter.append(el('div','meter-label',label),el('strong','quota-value',p==null?'—':p+'%'),track,reset);return meter;
+}
+function quotaGroup(a,s,k,title,color){
+ const stale=isStale(a),g=el('div','quota-group '+k+(stale?' stale':'')),heading=el('div','quota-title'),blocked=Math.max(a.blockedGroups?.[k]||0,a.blockedUntil||0);
+ heading.append(el('span','',title));if(stale)heading.append(el('span','badge blocked','Stale'));else if(blocked>Date.now())heading.append(el('span','badge blocked','Quota blocked'));else if(s.activeGroups?.[k]===a.id)heading.append(el('span','badge','Routing'));
+ const meters=el('div','quota-meters'),pool=a.quotaPools?.[k]||{};meters.append(quotaMeter('5 hours',pool.fiveHour,color,s.lowQuotaPercent),quotaMeter('Weekly',pool.weekly,color,s.lowQuotaPercent));
+ const foot=el('div','quota-foot');foot.textContent=a.quotaError?'Quota check unavailable':stale?(a.quotaCheckedAt?'Last checked '+new Date(a.quotaCheckedAt).toLocaleTimeString():'Waiting for quota readings'):blocked>Date.now()?'Blocked until '+new Date(blocked).toLocaleString():'Checked '+new Date(a.quotaCheckedAt).toLocaleTimeString();
+ g.append(heading,meters,foot);return g;
+}
+function validPercent(reading){
+ const value=reading?.percent;
+ return value!=null&&Number.isFinite(Number(value))&&Number(value)>=0&&Number(value)<=100?Number(value):null;
+}
+const formatPercent=value=>new Intl.NumberFormat(undefined,{maximumFractionDigits:1}).format(value)+'%';
+function summary(s,k){
+ const total=s.accounts.length,windows={fiveHour:{sum:0,known:0},weekly:{sum:0,known:0}};
+ let ready=0,low=0,unknown=0,usablePoints=0;
+ for(const a of s.accounts){
+  const fresh=!isStale(a)&&!a.quotaError,pool=a.quotaPools?.[k];
+  const five=fresh?validPercent(pool?.fiveHour):null,week=fresh?validPercent(pool?.weekly):null;
+  if(five!=null){windows.fiveHour.sum+=five;windows.fiveHour.known++;}
+  if(week!=null){windows.weekly.sum+=week;windows.weekly.known++;}
+  if(five==null||week==null){unknown++;continue;}
+  const blocked=Math.max(a.blockedGroups?.[k]||0,a.blockedUntil||0)>Date.now()||s.removingId===a.id;
+  if(Math.min(five,week)<=s.lowQuotaPercent||blocked)low++;else ready++;
+  if(!blocked)usablePoints+=Math.min(five,week);
+ }
+ const chart=$(k+'Chart'),complete=total-unknown;
+ for(const [windowKey,label,fill] of [['fiveHour','Five','--five-fill'],['weekly','Week','--week-fill']]){
+  const metric=windows[windowKey],mean=metric.known?metric.sum/metric.known:null;
+  chart.style.setProperty(fill,(mean==null?0:mean)+'%');
+  $(k+label).textContent=mean==null?'—':formatPercent(mean);
+ }
+ $(k+'Coverage').textContent=complete+' / '+total+' reporting';
+ $(k+'Effective').textContent=complete?formatPercent(usablePoints/complete):'—';
+ chart.setAttribute('aria-label',(k==='gemini'?'Gemini':'Claude and GPT')+' quota: 5-hour '+(windows.fiveHour.known?formatPercent(windows.fiveHour.sum/windows.fiveHour.known):'unknown')+' average remaining; weekly '+(windows.weekly.known?formatPercent(windows.weekly.sum/windows.weekly.known):'unknown')+' average remaining; usable overall '+(complete?formatPercent(usablePoints/complete):'unknown')+'; '+complete+' of '+total+' accounts fully confirmed.');
+ $(k+'Available').textContent=connected?ready+' of '+total+' accounts ready':'Readings are stale';
+ $(k+'Summary').textContent=low+' low or blocked · '+unknown+' unconfirmed';
+ $(k+'Tokens').textContent='Token total unavailable. Quotas are reported as percentages across '+total+' accounts.';
+}
+function onlineButton(text,cls,fn){const b=el('button',cls,text);b.dataset.online='';b.onclick=fn;return b;}
+function renderAccounts(s){
+ const stamp=JSON.stringify([s.accounts,s.activeGroups,s.removingId,s.lowQuotaPercent,s.accounts.map(isStale)]);if(stamp===accountStamp)return;accountStamp=stamp;$('accounts').replaceChildren();
+ for(const a of s.accounts){
+ const card=el('div','account '+(Object.values(s.activeGroups||{}).includes(a.id)?'active':'')),top=el('div','account-top'),left=el('div'),actions=el('div','row');left.append(el('div','name',a.label));if(a.email&&a.email!==a.label)left.append(el('div','email',a.email));
+ if(a.id===s.removingId)actions.append(el('span','badge blocked','Removing…'));
+ const use=onlineButton('Use','ghost',()=>act('/api/accounts/select',{id:a.id},'Selected '+a.label+'.'));use.dataset.action='select';
+ const menu=el('details','account-menu'),title=el('summary','','•••'),options=el('div','menu');title.setAttribute('aria-label','Manage '+a.label);
+ const rename=onlineButton('Rename','ghost',()=>{const label=prompt('Account label',a.label);if(label?.trim())act('/api/accounts/label',{id:a.id,label:label.trim()});});rename.dataset.action='rename';
+ const remove=onlineButton('Remove','danger',()=>{if(confirm('Remove '+a.label+' and its saved pool credential? You can add it again by signing in.'))act('/api/accounts/remove',{id:a.id},'Removed '+a.label+'.');});remove.dataset.action='remove';
+ options.append(rename,remove);menu.append(title,options);actions.append(use,menu);top.append(left,actions);
+ const groups=el('div','quota-groups');groups.append(quotaGroup(a,s,'gemini','Gemini','var(--gemini)'),quotaGroup(a,s,'other','Claude / GPT','var(--other)'));card.append(top,groups);$('accounts').append(card);
+ }if(!s.accounts.length)$('accounts').append(el('p','hint','Add your first account to get started.'));
+}
+function renderProjects(){
+ const stamp=JSON.stringify(preferences.projects);if(stamp===projectStamp)return;projectStamp=stamp;$('projects').replaceChildren();
+ for(const p of [...preferences.projects].sort((a,b)=>Number(b.pinned)-Number(a.pinned)||b.lastUsed-a.lastUsed)){
+ const card=el('div','saved-project'),name=p.path.replace(/[\\/]+$/,'').split(/[\\/]/).pop()||p.path;card.append(el('strong','',(p.pinned?'★ ':'')+name),el('span','project-path',p.path));const row=el('div','row');
+ const launch=onlineButton('Launch','primary',()=>launchProject(p.path));launch.dataset.action='launch';
+ const pin=el('button','ghost',p.pinned?'Unpin':'Pin');pin.onclick=()=>{p.pinned=!p.pinned;savePreferences();renderProjects();};
+ const forget=el('button','ghost','Forget');forget.title='Remove from this list; project files are kept';forget.onclick=()=>{preferences.projects=preferences.projects.filter(item=>identity(item.path)!==identity(p.path));savePreferences();renderProjects();};
+ row.append(launch,pin,forget);card.append(row);$('projects').append(card);
+ }if(!$('projects').children.length)$('projects').append(el('p','hint','Launch a project to remember it here, or pin a folder above. Saved in this browser.'));controls();
+}
+function category(t){if(/routing|switched .*before|retrying with the next/i.test(t))return 'switch';if(/quota|threshold/i.test(t))return 'quota';if(/opened antigravity/i.test(t))return 'project';if(/account|credential|sign.in/i.test(t)&&!/refreshed access token/i.test(t))return 'account';return 'system';}
+function renderEvents(){
+ if(!current)return;const filter=$('eventFilter').value,stamp=JSON.stringify([current.events,filter]);if(stamp===eventStamp)return;eventStamp=stamp;$('events').replaceChildren();
+ for(const e of current.events.filter(e=>filter==='all'||category(e.message)===filter).slice(0,10)){const kind=category(e.message),item=el('li','event '+kind),meta=el('div','event-meta');meta.append(el('span','badge',{switch:'Account switch',quota:'Quota',project:'Project',account:'Account',system:'Maintenance'}[kind]),el('span','time',new Date(e.at).toLocaleTimeString()));item.append(meta,el('div','',e.message));$('events').append(item);}
+ if(!$('events').children.length)$('events').append(el('li','hint','No matching activity yet.'));
+}
+function controls(){
+ const s=current,locked=!connected||busy||!s;for(const b of document.querySelectorAll('[data-online]'))b.disabled=locked;$('pinProject').disabled=!$('project').value.trim();if(!s)return;
+ const accountBusy=!!s.enrollment||!!s.removingId;$('add').disabled=locked||accountBusy||s.launchBusy;$('launch').disabled=locked||accountBusy||s.launchBusy||!$('project').value.trim();$('checkQuota').disabled=locked||!s.accounts.length||!!s.removingId;$('test').disabled=locked||s.accounts.length<2||!s.lastRequestedModel||accountBusy;$('testLow').disabled=$('test').disabled||!s.lowQuotaPercent;$('refresh').disabled=locked||!s.accounts.length||accountBusy;
+ for(const b of document.querySelectorAll('[data-action]')){const a=b.dataset.action;b.disabled=locked||!!s.removingId||(a!=='rename'&&!!s.enrollment)||(a==='remove'&&s.accounts.length<2)||(a==='launch'&&s.launchBusy);}
+}
+function render(s){
+ current=s;$('accountCount').textContent=s.accounts.length;renderAccounts(s);summary(s,'gemini');summary(s,'other');renderEvents();$('enrollment').textContent=s.enrollment?.message||'';$('cancel').hidden=!s.enrollment;$('model').textContent=s.lastRequestedModel||'No project prompt yet';$('group').textContent={gemini:'Gemini quota pool','3p':'Claude / GPT quota pool'}[s.lastRequestedGroup]||'';if(document.activeElement!==$('threshold'))$('threshold').value=s.lowQuotaPercent;
+ const errors=s.accounts.filter(a=>a.quotaError).length;$('quotaWarning').hidden=!errors;$('quotaWarning').textContent=errors+' account quota check'+(errors===1?'':'s')+' unavailable. Quota error retry remains active.';controls();
+}
+async function renewRequestKey(){const r=await fetch('/',{cache:'no-store',signal:AbortSignal.timeout(5000)});if(!r.ok)throw new Error('Could not reconnect to the pool.');const match=(await r.text()).match(/const key = '([0-9a-f]{64})'/);if(!match)throw new Error('Reload the dashboard to reconnect.');requestKey=match[1];}
+async function call(url,data={},retry=true){const r=await fetch(url,{method:'POST',headers:{'content-type':'application/json','x-agy-pool-key':requestKey},body:JSON.stringify(data)});if(r.status===403&&retry){await renewRequestKey();return call(url,data,false);}const result=await r.json();if(!r.ok)throw new Error(result.error||'HTTP '+r.status);return result;}
+async function refresh(){
+ if(refreshPending)return;refreshPending=true;
+ try{const r=await fetch('/api/status',{cache:'no-store',signal:AbortSignal.timeout(5000)});if(!r.ok)throw new Error('HTTP '+r.status);const s=await r.json();if(!Array.isArray(s.accounts)||!Array.isArray(s.events))throw new Error('Invalid status');failures=0;stopped=false;current=s;connection('running');}
+ catch{failures++;connection(stopped?'stopped':failures<3?'reconnecting':'offline');}finally{refreshPending=false;}
+}
+async function act(url,data={},success){
+ if(busy||!connected)return null;busy=true;controls();try{const s=await call(url,data);if(s.accounts)render(s);if(success)message(success);return s;}catch(e){message(e.message,true);return null;}finally{busy=false;controls();await refresh();}
+}
+async function launchProject(path){path=path.trim();if(!path){message('Enter a project folder first.',true);return;}$('project').value=path;saveForm();if(await act('/api/projects/launch',{path,resume:$('resume').checked},'Project CLI is opening in full auto mode.'))rememberProject(path);}
+$('project').addEventListener('input',saveForm);$('resume').addEventListener('change',saveForm);$('pinProject').onclick=()=>{const path=$('project').value.trim();if(path){saveForm();rememberProject(path,true);message('Project pinned.');}};$('launch').onclick=()=>launchProject($('project').value);$('eventFilter').onchange=renderEvents;
+$('theme').addEventListener('change',e=>applyTheme(e.target.value,true));
+$('add').onclick=()=>act('/api/accounts/add',{},'Sign in with a different Google account in the new CLI window.');$('cancel').onclick=()=>act('/api/accounts/cancel',{},'Original credential restored.');$('checkQuota').onclick=()=>act('/api/quota/check',{},'Refreshed both quota groups for all accounts.');
+$('test').onclick=()=>act('/api/diagnostics/next429',{},'Quota retry test armed. Send a small prompt in your project CLI.');$('testLow').onclick=()=>act('/api/diagnostics/nextlow',{},'Early switch test armed. Send a small prompt in your project CLI.');
+$('saveThreshold').onclick=()=>{const v=Number($('threshold').value);if(Number.isInteger(v)&&v>=0&&v<=100)act('/api/settings/threshold',{percent:v},'Switch threshold saved.');else message('Enter a whole percentage between 0 and 100.',true);};$('refresh').onclick=()=>act('/api/diagnostics/refresh',{id:current?.activeId},'The routing account renewed its access token.');
+$('stop').onclick=async()=>{if(busy||!connected||!confirm('Stop the pool? Open CLI sessions cannot send requests until it starts again.'))return;busy=true;controls();try{await call('/api/stop');stopped=true;connection('stopped');message('Pool stopped. Use the Desktop shortcut to start it again.');}catch(e){message(e.message,true);}finally{busy=false;controls();}};
+window.addEventListener('storage',e=>{if(e.key===THEME_STORAGE)loadTheme();if(e.key===STORAGE){loadPreferences();if(document.activeElement!==$('project'))$('project').value=preferences.path;$('resume').checked=preferences.resume;renderProjects();controls();}});
+loadTheme();loadPreferences();$('project').value=preferences.path;$('resume').checked=preferences.resume;renderProjects();controls();refresh();setInterval(refresh,2500);
+setInterval(()=>{for(const n of document.querySelectorAll('[data-reset]'))n.textContent=countdown(n.dataset.reset);if(current){renderAccounts(current);summary(current,'gemini');summary(current,'other');controls();}},10000);
+</script></body></html>

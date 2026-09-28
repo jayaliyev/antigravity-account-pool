@@ -1,0 +1,14 @@
+{
+  "name": "agy-account-pool",
+  "version": "0.2.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node quota-policy.test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

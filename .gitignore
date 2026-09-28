@@ -1,0 +1,10 @@
+data/
+runtime.json
+installed.json
+install-pending.json
+*.log
+*.dpapi
+*.tmp
+node_modules/
+dashboard-*.png
+agychange.config.json
