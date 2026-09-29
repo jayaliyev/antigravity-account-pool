@@ -38,7 +38,23 @@ const quotaChecks = new Map();
 const removingAccounts = new Set();
 const accountUse = new Map();
 const idleWaiters = new Map();
+// Transient UI activity. No prompt, response, or token content is retained here.
+const modelWork = new Map();
 let saveQueue = Promise.resolve();
+
+function beginModelWork(id, model) {
+  const work = modelWork.get(id) || { inFlight: 0, lastModel: null, lastStartedAt: null, lastFinishedAt: null };
+  work.inFlight++;
+  work.lastModel = model;
+  work.lastStartedAt = Date.now();
+  modelWork.set(id, work);
+}
+function endModelWork(id) {
+  const work = modelWork.get(id);
+  if (!work) return;
+  work.inFlight = Math.max(0, work.inFlight - 1);
+  work.lastFinishedAt = Date.now();
+}
 
 function acquireAccount(id) { accountUse.set(id, (accountUse.get(id) || 0) + 1); }
 function releaseAccount(id) {
@@ -319,6 +335,8 @@ async function proxy(req, res) {
     if (!account) break;
     tried.add(account.id);
     acquireAccount(account.id);
+    const trackedWork = !!model && !isAuxiliaryModel(model);
+    if (trackedWork) beginModelWork(account.id, model);
     try {
     if (choice.firstLow != null && account.id !== choice.preferredId) {
       note(`Switched ${model} before a request: selected account was at ${Math.round(choice.firstLow * 100)}% (threshold ${meta.lowQuotaPercent}%).`);
@@ -373,7 +391,10 @@ async function proxy(req, res) {
     res.on('close', () => response.destroy());
     await new Promise(resolve => res.once('close', resolve));
     return;
-    } finally { releaseAccount(account.id); }
+    } finally {
+      if (trackedWork) endModelWork(account.id);
+      releaseAccount(account.id);
+    }
   }
   res.writeHead(429, { 'content-type': 'application/json' });
   res.end(JSON.stringify({ error: { code: 429, message: 'Every saved account is currently quota blocked.' } }));
@@ -452,7 +473,10 @@ function status() {
       const quota = model && cached?.payload ? quotaForModel(cached.payload, model) : null;
       const windows = model && cached?.payload ? quotaWindowsForModel(cached.payload, model) : [];
       const pools = quotaPools(cached?.payload);
+      const work = modelWork.get(id);
       return { id, email, label, blockedUntil,
+        work: work ? { inFlight: work.inFlight, lastModel: work.lastModel,
+          lastStartedAt: work.lastStartedAt, lastFinishedAt: work.lastFinishedAt } : null,
         modelBlockedUntil: group ? Number(blockedByModel?.[group] || 0) : 0,
         blockedGroups: { gemini: Number(blockedByModel?.gemini || 0), other: Number(blockedByModel?.['3p'] || 0) },
         quotaRemainingPercent: quota ? Math.round(quota.remainingFraction * 100) : null,
@@ -543,6 +567,7 @@ async function api(req, res) {
       await bridge('delete', targetFor(account.id));
       snapshots.delete(account.id);
       quotaCache.delete(account.id);
+      modelWork.delete(account.id);
       meta.accounts = meta.accounts.filter(item => item.id !== account.id);
       for (const [model, id] of Object.entries(meta.activeByModel)) {
         if (id === account.id) delete meta.activeByModel[model];

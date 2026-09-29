@@ -2,7 +2,7 @@
 <html lang="en" data-theme="plum">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="agy-pool-dashboard" content="5"><title>Antigravity Account Pool</title>
+<meta name="agy-pool-dashboard" content="6"><title>Antigravity Account Pool</title>
 <style>
 :root{color-scheme:dark;font-family:"Segoe UI",Arial,sans-serif;background:#0c1020;color:#eef2ff}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 0 0,#203568,transparent 42%),#0c1020}main{max-width:1420px;margin:auto;padding:32px 28px 64px}h1{font-size:clamp(27px,3.2vw,40px);letter-spacing:-.035em;margin:6px 0}h2{font-size:18px;margin:0}h3{font-size:14px;margin:0}p{color:#aebada;line-height:1.5}.eyebrow{color:#8aa9ff;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase}.topbar,.head,.account-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.topbar{margin-bottom:24px}.lead{margin:6px 0 0;font-size:14px}.connection{display:inline-flex;align-items:center;gap:8px;background:#172237;border:1px solid #3e506b;padding:9px 13px;border-radius:30px;font-size:13px;white-space:nowrap}.dot{width:8px;height:8px;border-radius:50%;background:#e5bc75}.connection[data-state=running] .dot{background:#63d89d}.connection[data-state=stopped] .dot,.connection[data-state=offline] .dot{background:#ff9b82}.connection[data-state=running]{color:#a8e2c1}.notice{border:1px solid #715a39;background:#30291e;color:#ffe0a6;padding:12px 16px;border-radius:12px;margin-bottom:18px;font-size:14px}[hidden]{display:none!important}.overview{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}.summary{padding:18px 22px;border-radius:15px;background:#141e35;border:1px solid #385b82}.summary.other{border-color:#5b477e}.summary strong{display:block;font-size:24px;margin:6px 0 3px;letter-spacing:-.03em}.summary small{color:#a7b7d4}.grid{display:grid;gap:18px;grid-template-columns:minmax(0,1.65fr) minmax(320px,1fr);align-items:start}.panel{background:#151c32;border:1px solid #293553;border-radius:18px;padding:22px;box-shadow:0 12px 32px #0002;min-width:0}.sidebar{display:grid;gap:18px}.head{margin-bottom:16px}.accounts{display:grid;gap:12px}.account{padding:16px;border:1px solid #34415d;border-radius:13px;background:#11182b}.account.active{border-color:#6d9aff}.account-top{align-items:start}.name{font-weight:700;overflow-wrap:anywhere}.email{color:#9baacb;font-size:12px;margin-top:4px;overflow-wrap:anywhere}.quota-groups{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:14px}.quota-group{min-width:0;padding:13px 10px;border:1px solid #34415d;border-radius:12px;background:#0e1629}.quota-group.gemini{border-color:#385b82}.quota-group.other{border-color:#5b477e}.quota-title{display:flex;justify-content:space-between;align-items:center;gap:6px;flex-wrap:wrap;min-height:25px;font-size:13px;font-weight:700}.quota-meters{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:12px}.quota-meter{display:grid;justify-items:center;align-content:start;gap:5px;min-width:0;text-align:center}.ring{width:70px;height:70px;border-radius:50%;display:grid;place-items:center;position:relative;background:#33405f}.ring:before{content:"";position:absolute;inset:7px;border-radius:50%;background:#11182b}.ring-value{position:relative;font-size:15px;font-weight:700}.stale .ring{opacity:.48}.stale .quota-foot{color:#e6c68f}.meter-label{color:#b0bdd8;font-size:12px}.reset{color:#92a4c6;font-size:10px;line-height:1.5}.quota-foot{min-height:18px;margin-top:10px;color:#8f9fbe;font-size:11px}.badge{display:inline-block;color:#b8d5ff;background:#2b4670;border-radius:999px;padding:4px 8px;font-size:10px;font-weight:700;white-space:nowrap}.badge.blocked{background:#5a352e;color:#ffcab7}button,select{border:1px solid #435376;border-radius:9px;background:#253758;color:#f1f5ff;padding:9px 12px;font:inherit;font-size:12px;font-weight:600}button{cursor:pointer}button:hover{background:#314974}button:disabled{cursor:not-allowed;opacity:.45}button.primary{background:#83a7ff;color:#07142d;border-color:#a3beff}button.primary:hover{background:#a2bdff}button.ghost{background:transparent}button.danger{color:#ffb4a7;border-color:#804b53}button:focus-visible,input:focus-visible,summary:focus-visible,select:focus-visible{outline:2px solid #a7c0ff;outline-offset:3px}.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.stack{display:grid;gap:11px}label{font-size:13px;color:#c6d1ed}input[type=text],input[type=number]{width:100%;border:1px solid #465575;background:#0e1425;color:#f3f6ff;border-radius:10px;padding:12px;font:inherit;font-size:13px}input[type=number]{width:70px}input[type=checkbox]{accent-color:#83a7ff}.hint{font-size:12px;color:#9dacca;margin:10px 0 0;line-height:1.6}.project-list{display:grid;gap:9px;margin-top:12px}.saved-project{border:1px solid #34415d;padding:12px;border-radius:10px;min-width:0}.project-path{display:block;color:#9dacca;font-size:11px;overflow-wrap:anywhere;margin:4px 0 10px}.section-label{margin:20px 0 5px;font-size:12px;color:#aebddd}.model-info{padding:12px;border:1px solid #34415d;border-radius:10px;margin-top:16px;font-size:12px}.model-info strong{display:block;margin-top:5px;overflow-wrap:anywhere}.message{color:#bcd6ff;margin:0 0 16px;padding:12px 16px;border:1px solid #3b557c;border-radius:12px;font-size:13px}.message.error{color:#ffb4a7;border-color:#804b53}.events{list-style:none;padding:0;margin:0;display:grid;gap:14px}.event{border-left:2px solid #496bb2;padding-left:12px;font-size:12px;color:#c2cde8;line-height:1.6;overflow-wrap:anywhere}.event.switch{border-color:#88c9ac}.event.quota{border-color:#dda886}.event-meta{display:flex;gap:8px;align-items:center;margin-bottom:4px}.time{color:#91a2c5;font-size:11px}details.advanced{margin-top:0}summary{cursor:pointer;color:#c0cce6;font-size:13px;font-weight:600}.advanced-content{display:grid;gap:18px;padding-top:18px}.advanced-content .row{margin-top:10px}.account-menu{position:relative}.account-menu summary{list-style:none;padding:8px;font-size:18px;line-height:14px}.account-menu[open] .menu{position:absolute;right:0;top:34px;z-index:3;display:grid;gap:6px;padding:8px;min-width:125px;background:#1e2943;border:1px solid #435376;border-radius:10px;box-shadow:0 8px 20px #0006}footer{font-size:11px;color:#8393b8;padding:22px 0 0}
 @media(max-width:1040px){.grid{grid-template-columns:1fr}.sidebar{grid-row:1;grid-template-columns:1fr 1fr}.sidebar .advanced{grid-column:1/-1}}@media(max-width:640px){main{padding:22px 14px 40px}.sidebar,.overview{grid-template-columns:1fr}.panel{padding:16px}.quota-groups{grid-template-columns:1fr}.topbar{align-items:start}}
@@ -198,6 +198,20 @@ button.primary:hover{background:var(--accent);filter:brightness(1.08)}
 .account-menu[open] .menu{border-radius:6px;box-shadow:0 7px 20px var(--shadow)}
 @media(max-width:1050px){.grid{grid-template-columns:1fr}.sidebar{grid-row:auto;grid-template-columns:repeat(2,minmax(0,1fr))}.sidebar .advanced{grid-column:1/-1}}
 @media(max-width:720px){main{padding:18px 14px 36px}.overview,.sidebar{grid-template-columns:1fr}.topbar{align-items:start}.header-actions{justify-content:flex-start}.quota-groups{grid-template-columns:1fr}.quota-group,.quota-group.gemini,.quota-group.other{padding:7px 0;border-left:0}.quota-group+.quota-group{border-top:1px solid var(--border);margin-top:6px;padding-top:12px}.sidebar .advanced{grid-column:auto}}
+.workspace-panel{margin-bottom:12px}
+.workspace-panel .head{align-items:baseline}
+.workspace-note{font-size:11px;color:var(--subtle);margin:4px 0 0}
+.workspace-count{font-size:11px;color:var(--muted)}
+.workspace-room{min-width:0}
+.workspace-scene{display:block;width:100%;height:auto;image-rendering:pixelated;background:#302838;border:1px solid var(--border);border-radius:4px}
+.workspace-roster{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px}
+.workspace-person{display:flex;align-items:center;gap:6px;min-width:0;font-size:11px;color:var(--muted)}
+.workspace-person strong{color:var(--text);font-size:11px;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.workspace-person i{width:8px;height:8px;flex:none;background:var(--person-color);border-radius:2px}
+.workspace-index{font-size:10px;color:var(--subtle)}
+.workspace-person[data-state="working"] .workspace-state{color:var(--gemini)}
+.workspace-state{font-size:10px;color:var(--subtle);white-space:nowrap}
+.workspace-empty{margin:0;padding:16px 0;color:var(--subtle);font-size:12px}
 </style>
 </head>
 <body><main>
@@ -206,7 +220,9 @@ button.primary:hover{background:var(--accent);filter:brightness(1.08)}
 <section class="overview" aria-label="Quota availability">
 <div class="summary"><div class="summary-head"><h2>Gemini</h2><span id="geminiCoverage" class="coverage">Checking…</span></div><div class="aggregate-value" title="Average of each account’s lower 5-hour or weekly remaining quota; blocked accounts count as zero"><strong id="geminiEffective">—</strong><span>available overall</span></div><div id="geminiChart" class="aggregate-chart" role="img" aria-label="Gemini quota chart"><div class="aggregate-row"><span>5 hours</span><div class="aggregate-track"><div class="aggregate-fill five"></div></div><strong id="geminiFive">—</strong></div><div class="aggregate-row week"><span>Weekly</span><div class="aggregate-track"><div class="aggregate-fill"></div></div><strong id="geminiWeek">—</strong></div></div><div class="summary-foot"><span id="geminiAvailable">Checking quotas…</span><span id="geminiSummary">5-hour and weekly limits</span></div><p id="geminiTokens" class="token-note">Exact token total unavailable from quota readings.</p></div>
 <div class="summary other"><div class="summary-head"><h2>Claude / GPT</h2><span id="otherCoverage" class="coverage">Checking…</span></div><div class="aggregate-value" title="Average of each account’s lower 5-hour or weekly remaining quota; blocked accounts count as zero"><strong id="otherEffective">—</strong><span>available overall</span></div><div id="otherChart" class="aggregate-chart" role="img" aria-label="Claude and GPT quota chart"><div class="aggregate-row"><span>5 hours</span><div class="aggregate-track"><div class="aggregate-fill five"></div></div><strong id="otherFive">—</strong></div><div class="aggregate-row week"><span>Weekly</span><div class="aggregate-track"><div class="aggregate-fill"></div></div><strong id="otherWeek">—</strong></div></div><div class="summary-foot"><span id="otherAvailable">Checking quotas…</span><span id="otherSummary">5-hour and weekly limits</span></div><p id="otherTokens" class="token-note">Exact token total unavailable from quota readings.</p></div>
-</section><div class="grid">
+</section>
+<section class="panel workspace-panel" aria-labelledby="workspaceTitle"><div class="head"><div><h2 id="workspaceTitle">Account workspace</h2><p class="workspace-note">One shared office. Typing reflects live CLI requests; idle movement is decorative.</p></div><span id="workspaceCount" class="workspace-count">Waiting for accounts</span></div><div id="workspace" class="workspace-room"><canvas id="workspaceCanvas" class="workspace-scene" width="160" height="156" aria-hidden="true"></canvas><div id="workspaceRoster" class="workspace-roster"></div></div></section>
+<div class="grid">
 <section class="panel"><div class="head"><h2>Accounts <span id="accountCount" class="badge">0</span></h2><div class="row"><button id="checkQuota" class="ghost" data-online disabled>Refresh quotas</button><button id="add" class="primary" data-online disabled>Add account</button></div></div>
 <p id="quotaWarning" class="hint" hidden></p><div id="accounts" class="accounts"></div><p id="enrollment" class="hint"></p><button id="cancel" class="ghost" data-online hidden>Cancel account login</button></section>
 <div class="sidebar"><section class="panel"><div class="head"><h2>Open a project</h2></div>
@@ -227,7 +243,8 @@ let requestKey = key;
 const $ = id => document.getElementById(id), STORAGE = 'agy-pool.projects.v1', THEME_STORAGE = 'agy-pool.theme.v1', STALE_MS = 90000;
 const THEMES = new Set(['sage','ocean','plum','midnight','sand','paper']);
 let current = null, busy = false, connected = false, failures = 0, stopped = false, refreshPending = false;
-let accountStamp = '', projectStamp = '', eventStamp = '';
+let accountStamp = '', projectStamp = '', eventStamp = '', workspaceStamp = '';
+const officeCards = new Map(), reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 let preferences = {path:'',resume:true,projects:[]};
 const el = (tag, cls, text) => { const n=document.createElement(tag); if(cls)n.className=cls;if(text!=null)n.textContent=text;return n; };
 function applyTheme(value,persist=false){
@@ -304,6 +321,93 @@ function summary(s,k){
  $(k+'Summary').textContent=low+' low or blocked · '+unknown+' unconfirmed';
  $(k+'Tokens').textContent='Token total unavailable. Quotas are reported as percentages across '+total+' accounts.';
 }
+function accountColor(id){
+ let hash=0;for(const char of String(id))hash=(hash*31+char.charCodeAt(0))|0;
+ return ['#ca8d9c','#8eabc4','#c5a077','#9fbca1','#b9a0c9','#8fbeb8'][Math.abs(hash)%6];
+}
+function renderWorkspace(s){
+ const stamp=s.accounts.map(a=>a.id).join('|');
+ if(stamp!==workspaceStamp){
+  workspaceStamp=stamp;officeCards.clear();$('workspaceRoster').replaceChildren();
+  for(const a of s.accounts){
+   const person=el('div','workspace-person'),dot=el('i'),number=el('span','workspace-index','#'+(officeCards.size+1)),name=el('strong'),state=el('span','workspace-state'),color=accountColor(a.id);
+   person.dataset.id=a.id;person.style.setProperty('--person-color',color);person.append(dot,number,name,state);$('workspaceRoster').append(person);
+   officeCards.set(a.id,{person,name,state,color,seed:officeCards.size*1.7,x:26});
+  }
+  if(!s.accounts.length)$('workspaceRoster').append(el('p','workspace-empty','Add an account to populate the workspace.'));
+ }
+ $('workspaceCanvas').hidden=!s.accounts.length;
+ let working=0;
+ for(const a of s.accounts){
+  const ui=officeCards.get(a.id),work=a.work||{},recent=work.lastFinishedAt&&Date.now()-work.lastFinishedAt<10000;
+  const state=!connected?'offline':work.inFlight>0?'working':recent?'recent':'idle';
+  if(state==='working')working++;
+  ui.person.dataset.state=state;ui.name.textContent=a.label;
+  ui.state.textContent={working:'Working',recent:'Recently active',idle:'Idle',offline:'Unavailable'}[state];
+  ui.person.title=a.label+' — '+(work.lastModel?(state==='working'?'Using ':'Last model: ')+work.lastModel:'No model request yet');
+ }
+ $('workspaceCount').textContent=s.accounts.length?working+' working · '+s.accounts.length+' accounts':'No accounts';
+}
+function drawPerson(ctx,x,y,color,step,working){
+ x=Math.round(x);y=Math.round(y);const p=(dx,dy,w,h,c)=>{ctx.fillStyle=c;ctx.fillRect(x+dx,y+dy,w,h);};
+ p(2,28,14,2,'#211d29');
+ p(4,1,10,4,'#2a2631');p(3,4,12,3,'#332b35');
+ p(4,7,10,8,'#d6aa91');p(6,10,1,1,'#332b35');p(12,10,1,1,'#332b35');
+ p(3,15,12,10,color);p(5,17,8,2,'#e6d8cb');
+ p(1,16,2,9,'#d6aa91');p(15,16,2,9,'#d6aa91');
+ if(working){p(15,20+(step?1:0),5,3,'#d6aa91');p(18,22+(step?1:0),3,2,'#d6aa91');}
+ p(4,25,5,3,'#48516a');p(10,25,5,3,'#48516a');
+ p(4,28+(step&&!working?1:0),5,2,'#282d3a');p(10,28+(!step&&!working?1:0),5,2,'#282d3a');
+}
+function drawOffice(time){
+ const accounts=current?.accounts||[];if(!accounts.length)return;
+ const canvas=$('workspaceCanvas'),columns=Math.min(accounts.length,5,Math.max(1,Math.floor($('workspace').clientWidth/190)));
+ const rows=Math.ceil(accounts.length/columns),width=columns*160,height=70+rows*86;
+ if(canvas.width!==width||canvas.height!==height){canvas.width=width;canvas.height=height;}
+ const ctx=canvas.getContext('2d',{alpha:false}),moving=!reducedMotion.matches,step=moving&&Math.floor(time/260)%2;
+ const r=(x,y,w,h,c)=>{ctx.fillStyle=c;ctx.fillRect(x,y,w,h);};
+ const room={sage:['#34453e','#41544a','#778d7b','#506a5b','#5e7867'],ocean:['#2b4654','#365564','#7295a4','#496b79','#567785'],
+  plum:['#393143','#41384b','#665568','#57465b','#604d61'],midnight:['#30394d','#3c465a','#68758a','#4b566e','#56617a'],
+  sand:['#dfd5c3','#d4c8b4','#ad9d88','#c2b29d','#b4a48f'],paper:['#d8e2e2','#c9d8d9','#9cb1b4','#b9cacc','#aebfc2']}[document.documentElement.dataset.theme]||['#393143','#41384b','#665568','#57465b','#604d61'];
+ r(0,0,width,height,room[3]);r(0,0,width,53,room[0]);
+ for(let x=0;x<width;x+=20)for(let y=0;y<53;y+=20)r(x+(y%40?10:0),y,1,20,room[1]);
+ r(0,53,width,4,room[2]);
+ for(let x=0;x<width;x+=20)for(let y=57;y<height;y+=20)r(x+(y%40?10:0),y,19,1,room[4]);
+ // One continuous room with original pixel art windows and shelves.
+ for(let x=14;x<width;x+=320){
+  r(x,9,42,34,'#201e2d');r(x+4,13,34,26,'#65809a');r(x+4,28,34,11,'#46536e');
+  r(x+7,29,6,10,'#39465f');r(x+20,24,8,15,'#39465f');r(x+32,30,4,9,'#39465f');
+  r(x+20,13,2,26,'#d7c9b6');r(x+4,25,34,2,'#d7c9b6');
+  r(x+104,16,28,3,'#a38a79');r(x+107,8,4,8,'#9fb3aa');r(x+113,10,4,6,'#ba8da0');r(x+119,7,5,9,'#c9ad7f');
+ }
+ accounts.forEach((account,i)=>{
+  const ui=officeCards.get(account.id),state=ui.person.dataset.state,working=state==='working',recent=state==='recent';
+  const ox=(i%columns)*160,oy=70+Math.floor(i/columns)*86;
+  const target=working||recent?61:24+(moving?Math.sin(time/1800+ui.seed)*8:0);
+  ui.x=moving?ui.x+(target-ui.x)*.16:target;
+  ctx.save();ctx.translate(ox,oy);
+  r(9,11,135,47,'#463b4c55');
+  r(80,26,51,7,'#a48677');r(84,33,5,17,'#745b5b');r(123,33,5,17,'#745b5b');
+  r(94,3,31,22,'#252536');r(97,6,25,16,working?'#789f9e':'#4a6175');
+  r(106,25,5,2,'#262837');r(94,23,24,2,'#c4ada2');r(119,21,5,5,'#d1b4a3');
+  if(working){
+   r(100,9,12,2,'#d6ead5');r(100,13,17,2,'#b1d3cb');r(100,17,8,2,'#d6ead5');
+   if(step)r(111,17,2,2,'#ece2ba');
+  }else{r(100,11,15,1,'#91a5a8');r(100,15,10,1,'#91a5a8');}
+  r(63,48,15,4,'#806d7c');r(66,52,3,9,'#51445a');r(74,52,3,9,'#51445a');
+  r(139,38,12,9,'#bb917d');r(142,29,6,10,'#6d977e');r(137,33,6,3,'#80a987');r(148,31,5,3,'#80a987');
+  drawPerson(ctx,ui.x,(working?19:21)+(moving&&!working&&step?1:0),ui.color,step,working);
+  r(11,65,17,11,'#322b3d');ctx.fillStyle='#eee6e9';ctx.font='8px monospace';ctx.fillText(String(i+1),17,73);
+  if(recent){r(134,5,2,2,'#e8d09b');r(141,10,2,2,'#e8d09b');}
+  ctx.restore();
+ });
+ if(!connected)r(0,0,width,height,'#3c344b88');
+}
+let lastOfficeFrame=0;
+function officeLoop(time){
+ if(!document.hidden&&time-lastOfficeFrame>110){drawOffice(time);lastOfficeFrame=time;}
+ requestAnimationFrame(officeLoop);
+}
 function onlineButton(text,cls,fn){const b=el('button',cls,text);b.dataset.online='';b.onclick=fn;return b;}
 function renderAccounts(s){
  const stamp=JSON.stringify([s.accounts,s.activeGroups,s.removingId,s.lowQuotaPercent,s.accounts.map(isStale)]);if(stamp===accountStamp)return;accountStamp=stamp;$('accounts').replaceChildren();
@@ -340,7 +444,7 @@ function controls(){
  for(const b of document.querySelectorAll('[data-action]')){const a=b.dataset.action;b.disabled=locked||!!s.removingId||(a!=='rename'&&!!s.enrollment)||(a==='remove'&&s.accounts.length<2)||(a==='launch'&&s.launchBusy);}
 }
 function render(s){
- current=s;$('accountCount').textContent=s.accounts.length;renderAccounts(s);summary(s,'gemini');summary(s,'other');renderEvents();$('enrollment').textContent=s.enrollment?.message||'';$('cancel').hidden=!s.enrollment;$('model').textContent=s.lastRequestedModel||'No project prompt yet';$('group').textContent={gemini:'Gemini quota pool','3p':'Claude / GPT quota pool'}[s.lastRequestedGroup]||'';if(document.activeElement!==$('threshold'))$('threshold').value=s.lowQuotaPercent;
+ current=s;$('accountCount').textContent=s.accounts.length;renderWorkspace(s);renderAccounts(s);summary(s,'gemini');summary(s,'other');renderEvents();$('enrollment').textContent=s.enrollment?.message||'';$('cancel').hidden=!s.enrollment;$('model').textContent=s.lastRequestedModel||'No project prompt yet';$('group').textContent={gemini:'Gemini quota pool','3p':'Claude / GPT quota pool'}[s.lastRequestedGroup]||'';if(document.activeElement!==$('threshold'))$('threshold').value=s.lowQuotaPercent;
  const errors=s.accounts.filter(a=>a.quotaError).length;$('quotaWarning').hidden=!errors;$('quotaWarning').textContent=errors+' account quota check'+(errors===1?'':'s')+' unavailable. Quota error retry remains active.';controls();
 }
 async function renewRequestKey(){const r=await fetch('/',{cache:'no-store',signal:AbortSignal.timeout(5000)});if(!r.ok)throw new Error('Could not reconnect to the pool.');const match=(await r.text()).match(/const key = '([0-9a-f]{64})'/);if(!match)throw new Error('Reload the dashboard to reconnect.');requestKey=match[1];}
@@ -361,6 +465,6 @@ $('test').onclick=()=>act('/api/diagnostics/next429',{},'Quota retry test armed.
 $('saveThreshold').onclick=()=>{const v=Number($('threshold').value);if(Number.isInteger(v)&&v>=0&&v<=100)act('/api/settings/threshold',{percent:v},'Switch threshold saved.');else message('Enter a whole percentage between 0 and 100.',true);};$('refresh').onclick=()=>act('/api/diagnostics/refresh',{id:current?.activeId},'The routing account renewed its access token.');
 $('stop').onclick=async()=>{if(busy||!connected||!confirm('Stop the pool? Open CLI sessions cannot send requests until it starts again.'))return;busy=true;controls();try{await call('/api/stop');stopped=true;connection('stopped');message('Pool stopped. Use the Desktop shortcut to start it again.');}catch(e){message(e.message,true);}finally{busy=false;controls();}};
 window.addEventListener('storage',e=>{if(e.key===THEME_STORAGE)loadTheme();if(e.key===STORAGE){loadPreferences();if(document.activeElement!==$('project'))$('project').value=preferences.path;$('resume').checked=preferences.resume;renderProjects();controls();}});
-loadTheme();loadPreferences();$('project').value=preferences.path;$('resume').checked=preferences.resume;renderProjects();controls();refresh();setInterval(refresh,2500);
+loadTheme();loadPreferences();$('project').value=preferences.path;$('resume').checked=preferences.resume;renderProjects();controls();refresh();setInterval(refresh,2500);requestAnimationFrame(officeLoop);
 setInterval(()=>{for(const n of document.querySelectorAll('[data-reset]'))n.textContent=countdown(n.dataset.reset);if(current){renderAccounts(current);summary(current,'gemini');summary(current,'other');controls();}},10000);
 </script></body></html>

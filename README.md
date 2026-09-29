@@ -85,10 +85,13 @@ The top Gemini and Claude/GPT summaries show percentages on a **0–100% scale r
 
 Every account also has its own five-hour and weekly bars for both quota pools. Reset countdowns are shown when Google provides a reset time. **Refresh quotas** requests new readings immediately; the pool otherwise refreshes them periodically. The **Routing** label identifies the account preferred for that pool's next request. The login name displayed by `agy` may still be the original account because routing happens inside the local proxy.
 
+The **Account workspace** is one shared pixel-art room that grows into rows as you add accounts. Each saved account has one character and a matching name in the roster. A character moves to its desk and types while that account has a model request in flight; it shows as recently active just after the request finishes. Idle wandering is decorative. These characters visualize routing activity and do not launch independent coding agents. The room respects your theme choice and reduced-motion setting.
+
 These are **remaining quota percentages, not token counts**. Google's quota response does not provide an absolute token allowance, so the app cannot compute a trustworthy combined token total.
 
 ## Limits and privacy
 
+- [Google Antigravity's current Additional Terms](https://antigravity.google/terms) restrict third-party tools that access the service and warn of possible account suspension or termination. This app's local proxy forwards requests with account credentials, so its use may conflict with those terms. Review them and seek Google's permission before using or distributing the routing feature.
 - Early switching depends on quota readings that Google can change or delay. A 429 before output starts is the fallback. Neither path guarantees that every long-running turn will finish without interruption.
 - If all accounts are exhausted or the selected model is unavailable to the next account, the CLI receives Google's error. The pool does not switch models for you.
 - Only CLI sessions opened through this dashboard use the proxy. An existing `agy` process started elsewhere has no local proxy URL.
