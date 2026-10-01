@@ -198,20 +198,49 @@ button.primary:hover{background:var(--accent);filter:brightness(1.08)}
 .account-menu[open] .menu{border-radius:6px;box-shadow:0 7px 20px var(--shadow)}
 @media(max-width:1050px){.grid{grid-template-columns:1fr}.sidebar{grid-row:auto;grid-template-columns:repeat(2,minmax(0,1fr))}.sidebar .advanced{grid-column:1/-1}}
 @media(max-width:720px){main{padding:18px 14px 36px}.overview,.sidebar{grid-template-columns:1fr}.topbar{align-items:start}.header-actions{justify-content:flex-start}.quota-groups{grid-template-columns:1fr}.quota-group,.quota-group.gemini,.quota-group.other{padding:7px 0;border-left:0}.quota-group+.quota-group{border-top:1px solid var(--border);margin-top:6px;padding-top:12px}.sidebar .advanced{grid-column:auto}}
-.workspace-panel{margin-bottom:12px}
-.workspace-panel .head{align-items:baseline}
-.workspace-note{font-size:11px;color:var(--subtle);margin:4px 0 0}
-.workspace-count{font-size:11px;color:var(--muted)}
+.workspace-panel{margin-bottom:12px;padding:0;overflow:hidden}
+.workspace-panel .head{padding:18px 20px 14px;margin:0;align-items:center;gap:16px}
+.workspace-heading{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.workspace-heading h2{font-size:16px}
+.workspace-count{font-size:11px;color:var(--subtle);font-variant-numeric:tabular-nums}
+.workspace-note{font-size:12px;color:var(--subtle);margin:5px 0 0;line-height:1.4}
+.workspace-tools{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:6px 8px}
+.workspace-tools button{font-size:11px;font-weight:500;padding:6px 10px;background:transparent}
+.workspace-tools button[aria-pressed="true"]{background:var(--inset)}
+.workspace-tools .workspace-fun{display:flex;flex-wrap:wrap;gap:6px;padding-right:8px;margin-right:2px;border-right:1px solid var(--border)}
+.workspace-tools .workspace-fun button:disabled{opacity:.45}
+.workspace-chatter{min-height:15px;padding:0 20px 2px;font-size:11px;color:var(--muted);font-style:italic;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .workspace-room{min-width:0}
-.workspace-scene{display:block;width:100%;height:auto;image-rendering:pixelated;background:#302838;border:1px solid var(--border);border-radius:4px}
-.workspace-roster{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px}
-.workspace-person{display:flex;align-items:center;gap:6px;min-width:0;font-size:11px;color:var(--muted)}
-.workspace-person strong{color:var(--text);font-size:11px;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.workspace-person i{width:8px;height:8px;flex:none;background:var(--person-color);border-radius:2px}
-.workspace-index{font-size:10px;color:var(--subtle)}
-.workspace-person[data-state="working"] .workspace-state{color:var(--gemini)}
+.workspace-stage{position:relative;overflow:hidden;margin:0 12px;background:#1b1921;border:1px solid var(--border);border-radius:5px}
+.workspace-scene{display:block;width:100%;height:auto;image-rendering:pixelated;cursor:default;touch-action:pan-y}
+.workspace-tooltip{position:absolute;pointer-events:none;z-index:2;max-width:220px;padding:7px 10px;background:var(--panel);border:1px solid var(--strong-border);border-radius:4px;color:var(--text);font-size:11px;box-shadow:0 3px 12px #0003;transform:translate(-50%,-100%);white-space:nowrap}
+.workspace-empty{position:absolute;left:50%;top:55%;transform:translate(-50%,-50%);padding:14px 18px;background:var(--panel);border:1px solid var(--border);border-radius:4px;text-align:center;max-width:90%;width:275px}
+.workspace-empty strong{font-size:14px;font-weight:600}
+.workspace-empty p{font-size:12px;line-height:1.5;margin:5px 0 0;color:var(--muted)}
+.workspace-caption{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 20px 12px;font-size:10px;color:var(--subtle)}
+.workspace-legend{display:flex;align-items:center;gap:15px}
+.workspace-legend span{display:flex;align-items:center;gap:5px}
+.workspace-key{display:block;width:7px;height:7px;background:#6f8e8c;box-shadow:inset 0 0 0 1px #c4dfca}
+.workspace-key.idle{background:#827287;box-shadow:inset 0 0 0 1px #b7a6b7}
+.workspace-roster{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:0;border-top:1px solid var(--border);padding:8px 12px}
+.workspace-person{display:flex;align-items:center;text-align:left;gap:9px;min-width:0;padding:7px 8px;border:1px solid transparent;border-radius:4px;background:transparent;font-weight:400}
+.workspace-person:hover{background:var(--inset);border-color:var(--border)}
+.workspace-person[aria-pressed="true"]{background:var(--inset);border-color:var(--strong-border)}
+.workspace-portrait{width:28px;height:36px;flex:none;image-rendering:pixelated}
+.workspace-person-copy{display:grid;gap:3px;min-width:0;flex:1}
+.workspace-person-name{display:flex;align-items:baseline;gap:6px;min-width:0}
+.workspace-person strong{font-size:11px;font-weight:550;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.workspace-index{font:10px ui-monospace,Consolas,monospace;color:var(--subtle);flex:none}
 .workspace-state{font-size:10px;color:var(--subtle);white-space:nowrap}
-.workspace-empty{margin:0;padding:16px 0;color:var(--subtle);font-size:12px}
+.workspace-person[data-state="working"] .workspace-state{color:var(--gemini)}
+.workspace-inspector{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:61px;border-top:1px solid var(--border);background:var(--inset);padding:11px 20px;font-size:11px;color:var(--subtle)}
+.workspace-inspector-copy{min-width:0;display:grid;gap:4px}
+.workspace-inspector-line{display:flex;align-items:baseline;flex-wrap:wrap;gap:8px;color:var(--text)}
+.workspace-inspector-line strong{font-size:12px;font-weight:550;overflow-wrap:anywhere}
+.workspace-inspector-state{font-size:10px;color:var(--muted)}
+.workspace-inspector-model{font-size:11px;color:var(--subtle);overflow-wrap:anywhere;line-height:1.4}
+.workspace-inspector button{flex:none;padding:5px 8px;font-size:10px;font-weight:400;background:transparent}
+@media(max-width:720px){.workspace-panel{padding:0}.workspace-panel .head{padding:14px 14px 12px;flex-wrap:wrap}.workspace-tools{justify-content:flex-start}.workspace-tools .workspace-fun{border-right:0;padding-right:0}.workspace-chatter{padding:0 14px 2px}.workspace-stage{margin:0 8px}.workspace-caption{padding:10px 14px}.workspace-roster{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));padding:6px 8px}.workspace-inspector{padding:11px 14px}.workspace-heading{gap:8px}.workspace-caption>span{font-size:10px;line-height:1.5}}
 </style>
 </head>
 <body><main>
@@ -221,7 +250,23 @@ button.primary:hover{background:var(--accent);filter:brightness(1.08)}
 <div class="summary"><div class="summary-head"><h2>Gemini</h2><span id="geminiCoverage" class="coverage">Checking…</span></div><div class="aggregate-value" title="Average of each account’s lower 5-hour or weekly remaining quota; blocked accounts count as zero"><strong id="geminiEffective">—</strong><span>available overall</span></div><div id="geminiChart" class="aggregate-chart" role="img" aria-label="Gemini quota chart"><div class="aggregate-row"><span>5 hours</span><div class="aggregate-track"><div class="aggregate-fill five"></div></div><strong id="geminiFive">—</strong></div><div class="aggregate-row week"><span>Weekly</span><div class="aggregate-track"><div class="aggregate-fill"></div></div><strong id="geminiWeek">—</strong></div></div><div class="summary-foot"><span id="geminiAvailable">Checking quotas…</span><span id="geminiSummary">5-hour and weekly limits</span></div><p id="geminiTokens" class="token-note">Exact token total unavailable from quota readings.</p></div>
 <div class="summary other"><div class="summary-head"><h2>Claude / GPT</h2><span id="otherCoverage" class="coverage">Checking…</span></div><div class="aggregate-value" title="Average of each account’s lower 5-hour or weekly remaining quota; blocked accounts count as zero"><strong id="otherEffective">—</strong><span>available overall</span></div><div id="otherChart" class="aggregate-chart" role="img" aria-label="Claude and GPT quota chart"><div class="aggregate-row"><span>5 hours</span><div class="aggregate-track"><div class="aggregate-fill five"></div></div><strong id="otherFive">—</strong></div><div class="aggregate-row week"><span>Weekly</span><div class="aggregate-track"><div class="aggregate-fill"></div></div><strong id="otherWeek">—</strong></div></div><div class="summary-foot"><span id="otherAvailable">Checking quotas…</span><span id="otherSummary">5-hour and weekly limits</span></div><p id="otherTokens" class="token-note">Exact token total unavailable from quota readings.</p></div>
 </section>
-<section class="panel workspace-panel" aria-labelledby="workspaceTitle"><div class="head"><div><h2 id="workspaceTitle">Account workspace</h2><p class="workspace-note">One shared office. Typing reflects live CLI requests; idle movement is decorative.</p></div><span id="workspaceCount" class="workspace-count">Waiting for accounts</span></div><div id="workspace" class="workspace-room"><canvas id="workspaceCanvas" class="workspace-scene" width="160" height="156" aria-hidden="true"></canvas><div id="workspaceRoster" class="workspace-roster"></div></div></section>
+<section class="panel workspace-panel" aria-labelledby="workspaceTitle">
+ <div class="head">
+  <div><div class="workspace-heading"><h2 id="workspaceTitle">The office</h2><span id="workspaceCount" class="workspace-count">Waiting for accounts</span></div><p class="workspace-note">A desk for every account. One shared room.</p></div>
+  <div class="workspace-tools"><div class="workspace-fun" role="group" aria-label="Break-time activities (decorative)"><button data-fun="coffee" class="ghost" type="button" title="Send someone for a coffee">Coffee run</button><button data-fun="pong" class="ghost" type="button" title="Start a ping-pong match">Ping-pong</button><button data-fun="arcade" class="ghost" type="button" title="Send someone to the arcade cabinet">Arcade</button><button data-fun="chat" class="ghost" type="button" title="Start a chat between two characters">Chat</button></div><button id="workspaceChat" class="ghost" type="button" aria-pressed="true" title="Show or hide speech bubbles">Chat: on</button><button id="workspaceMotion" class="ghost" type="button" aria-pressed="false">Pause motion</button></div>
+ </div>
+ <div id="workspace" class="workspace-room">
+  <div id="workspaceStage" class="workspace-stage">
+   <canvas id="workspaceCanvas" class="workspace-scene" width="680" height="310" role="img" aria-label="A shared pixel office for your accounts"></canvas>
+   <div id="workspaceTooltip" class="workspace-tooltip" hidden></div>
+   <div id="workspaceEmpty" class="workspace-empty" hidden><strong>Your office is empty</strong><p>Add an account below to give your first agent a desk.</p></div>
+  </div>
+  <div class="workspace-caption"><div class="workspace-legend"><span><i class="workspace-key"></i>Live request</span><span><i class="workspace-key idle"></i>Idle</span></div><span>Idle movement, chatter and games are decorative. Select a character to inspect its activity.</span></div>
+  <div id="workspaceChatter" class="workspace-chatter" aria-hidden="true"></div>
+  <div id="workspaceRoster" class="workspace-roster" aria-label="Account characters"></div>
+  <div id="workspaceInspector" class="workspace-inspector"><div class="workspace-inspector-copy"><div id="workspaceInspectorLine" class="workspace-inspector-line">Select a character or an account above.</div><div id="workspaceInspectorModel" class="workspace-inspector-model">Typing follows live model requests in your CLI.</div></div><button id="workspaceClear" type="button" class="ghost" hidden>Clear selection</button></div>
+ </div>
+</section>
 <div class="grid">
 <section class="panel"><div class="head"><h2>Accounts <span id="accountCount" class="badge">0</span></h2><div class="row"><button id="checkQuota" class="ghost" data-online disabled>Refresh quotas</button><button id="add" class="primary" data-online disabled>Add account</button></div></div>
 <p id="quotaWarning" class="hint" hidden></p><div id="accounts" class="accounts"></div><p id="enrollment" class="hint"></p><button id="cancel" class="ghost" data-online hidden>Cancel account login</button></section>
@@ -321,91 +366,523 @@ function summary(s,k){
  $(k+'Summary').textContent=low+' low or blocked · '+unknown+' unconfirmed';
  $(k+'Tokens').textContent='Token total unavailable. Quotas are reported as percentages across '+total+' accounts.';
 }
-function accountColor(id){
- let hash=0;for(const char of String(id))hash=(hash*31+char.charCodeAt(0))|0;
- return ['#ca8d9c','#8eabc4','#c5a077','#9fbca1','#b9a0c9','#8fbeb8'][Math.abs(hash)%6];
+// Original canvas artwork. This view consumes status only; selecting a character never changes routing.
+// Chat, coffee, games and other break-time play are purely decorative. Only a real in-flight request produces "Working".
+const OFFICE_MOTION_STORAGE='agy-pool.office.motion.v2',OFFICE_CHAT_STORAGE='agy-pool.office.chat.v1';
+let officePaused=false,officeChatOn=true,officeMoving=false,officeSelection=null,officeHover=null,officeHoverProp=null,officeLayout=null,officeBackground=null,lastOfficeFrame=0,officeClock=0;
+try{officePaused=localStorage.getItem(OFFICE_MOTION_STORAGE)==='paused';officeChatOn=localStorage.getItem(OFFICE_CHAT_STORAGE)!=='off';}catch{}
+const officeHash=id=>{let h=2166136261;for(const c of String(id)){h^=c.charCodeAt(0);h=Math.imul(h,16777619);}return h>>>0;};
+const officeRnd=(a,b)=>a+Math.random()*(b-a),officePick=list=>list[Math.floor(Math.random()*list.length)];
+const officeFx=[],officeSpots=new Map(),officeGroups=new Set(),officeMachines={coffee:{mode:'idle',t0:0,owner:null},arcade:{mode:'idle',t0:0,owner:null},vending:{mode:'idle',t0:0,owner:null}};
+const OFFICE_CHAT=[
+ ['Is it Friday yet?','Ask the calendar.','Rude.'],['Coffee or tea?','Coffee. Always.','Same.'],['My context is full','Take a nap?','Good idea.'],
+ ['Heard a rumor...','Tell me!','The sofa is soft'],['Which model today?','Whatever they send','Fair enough.'],['Nice desk plant','Her name is Fern','Of course.'],
+ ['Ping-pong later?','You are on!','I will win.'],['Is this a bug?','It is a feature','Ship it!'],['Tabs or spaces?','Spaces. Always.','We are done.'],
+ ['Love this rug','It ties the room','Nice one.'],['Lunch ideas?','Pixel pizza','Obviously.'],['Rubber duck, anyone?','Quack.','That helped.'],
+ ['Did you hear that?','It was the fridge','Always is.'],['Any good podcasts?','Only about caching','Ha!'],['Long day?','Feels like a week','Hang in there.']];
+const OFFICE_MUTTER=['Hmm...','La la la','Almost lunch?','Nice day.','*yawn*','Where was I?'],OFFICE_VISIT=['Need a hand?','Looking busy!','How is it going?','Coffee?'],OFFICE_HELLO=['Hi there!','Hello!','Oh, hi!','Boop!','Need me?','Good day!'];
+const OFFICE_START=['On it!','Here we go!','Request in!','Let me see...'],OFFICE_DONE=['Done!','All set!','Ta-da!','Nailed it!'],OFFICE_CHEER=['Nice!','Bravo!','Go go!','Well done!'],OFFICE_TIRED=['So sleepy...','Low on juice','Need coffee...','Running on fumes'];
+const OFFICE_ACT_LABEL={coffee:'getting coffee',arcade:'playing the arcade cabinet',vending:'at the vending machine',water:'at the water cooler',couch:'relaxing on the sofa',read:'browsing the bookcase',plant:'watering the plants',stroll:'stretching their legs',desk:'taking a moment at the desk',visit:'checking on a colleague',chat:'chatting',pong:'playing ping-pong'};
+const OFFICE_EMOTES={
+ heart:{color:'#cf7f93',rows:['.XX.XX.','XXXXXXX','XXXXXXX','.XXXXX.','..XXX..','...X...']},
+ star:{color:'#d8b45c',rows:['...X...','...X...','XXXXXXX','.XXXXX.','..XXX..','.XX.XX.','.X...X.']},
+ bang:{color:'#d4806d',rows:['.X.','.X.','.X.','.X.','...','.X.']},
+ ques:{color:'#7f9fc0',rows:['.XX.','X..X','...X','..X.','.X..','....','.X..']},
+ note:{color:'#8f7fc4',rows:['...XX.','...X.X','...X..','...X..','.XXX..','XXXX..','.XX...']},
+ sweat:{color:'#6f9bc4',rows:['..X..','..X..','.XXX.','XXXXX','XXXXX','.XXX.']},
+ zzz:{color:'#8d86b8',rows:['XXXXX','...X.','..X..','.X...','XXXXX']}};
+let officeTickerUntil=0;
+function officeTicker(text){const n=$('workspaceChatter');if(n)n.textContent=text||'';officeTickerUntil=text?officeClock+9:0;}
+function officeSay(ui,text,dur=2.6,emote=null,delay=0){
+ if(!officeMoving||!ui)return;if(!officeChatOn)text=null;if(!text&&!emote)return;
+ ui.say={text,emote,from:officeClock+delay,until:officeClock+delay+dur};
+ if(text&&!delay)officeTicker('Agent '+String(ui.index+1).padStart(2,'0')+' · “'+text+'”');
+}
+function officeBurst(x,y,kind,count){
+ if(!officeMoving)return;const colors=kind==='confetti'?['#d98b7a','#e3c46f','#a6d6a0','#8fb4d6','#c98aa6']:['#f0e4b0','#fff6d0','#e3c46f'];
+ for(let i=0;i<count&&officeFx.length<140;i++)officeFx.push({x,y,vx:officeRnd(-34,34),vy:officeRnd(kind==='confetti'?-70:-40,-15),g:kind==='confetti'?110:30,life:officeRnd(.9,1.6),size:kind==='confetti'?2:1,color:officePick(colors)});
+}
+function officeUpdateFx(delta){for(let i=officeFx.length-1;i>=0;i--){const f=officeFx[i];f.life-=delta;if(f.life<=0){officeFx.splice(i,1);continue;}f.vy+=f.g*delta;f.x+=f.vx*delta;f.y+=f.vy*delta;}}
+function accountColor(id){return ['#b98d91','#80a5aa','#c1a16f','#90a17a','#a08bae','#bd8e72','#8195bb','#a8aa7a'][officeHash(id)%8];}
+function officeAppearance(id){
+ const h=officeHash(id);return {shirt:accountColor(id),skin:['#dcb49a','#bb8c70','#8f634f','#e5c2a3','#c9987c'][Math.floor(h/8)%5],hair:['#3d3038','#6c493c','#a47b4d','#302d36','#655465'][Math.floor(h/40)%5],style:Math.floor(h/200)%6,pants:['#465263','#53535e','#596251','#62505d'][Math.floor(h/1200)%4],glasses:Math.floor(h/4800)%4===0};
+}
+function officeState(work){return !connected?'offline':work?.inFlight>0?'working':work?.lastFinishedAt&&Date.now()-work.lastFinishedAt<10000?'recent':'idle';}
+function officeStateLabel(ui){return ui.activity==='working'?(ui.work.inFlight>1?'Working · '+ui.work.inFlight+' requests':'Working'):({recent:'Recently active',offline:'Unavailable',idle:'Idle'})[ui.activity];}
+function officeTired(a,s){
+ if(isStale(a)||a.quotaError)return false;const now=Date.now(),low=s.lowQuotaPercent;
+ if(Math.max(a.blockedUntil||0,a.blockedGroups?.gemini||0,a.blockedGroups?.other||0)>now)return true;
+ return ['gemini','other'].some(k=>[a.quotaPools?.[k]?.fiveHour,a.quotaPools?.[k]?.weekly].some(reading=>{const v=validPercent(reading);return v!=null&&v<=low;}));
+}
+function officeReact(ui,prev){
+ if(!officeMoving||!ui.station||prev==='offline'||ui.activity==='offline')return;
+ if(ui.activity==='working'&&prev!=='working')officeSay(ui,officePick(OFFICE_START),2.2);
+ if(prev==='working'&&ui.activity!=='working'){
+  officeSay(ui,officePick(OFFICE_DONE),2.6,'star');ui.cheerUntil=officeClock+1.8;officeBurst(ui.station.x,ui.station.y+6,'confetti',16);
+  let fans=0;for(const o of officeCards.values())if(o!==ui&&fans<2&&officeFree(o)&&Math.random()<.7){fans++;officeSay(o,officePick(OFFICE_CHEER),2,'heart',.5+fans*.5);o.cheerUntil=officeClock+2+fans*.5;}
+ }
 }
 function renderWorkspace(s){
- const stamp=s.accounts.map(a=>a.id).join('|');
+ const ids=new Set(s.accounts.map(a=>a.id)),stamp=s.accounts.map(a=>a.id).join('|');
  if(stamp!==workspaceStamp){
-  workspaceStamp=stamp;officeCards.clear();$('workspaceRoster').replaceChildren();
-  for(const a of s.accounts){
-   const person=el('div','workspace-person'),dot=el('i'),number=el('span','workspace-index','#'+(officeCards.size+1)),name=el('strong'),state=el('span','workspace-state'),color=accountColor(a.id);
-   person.dataset.id=a.id;person.style.setProperty('--person-color',color);person.append(dot,number,name,state);$('workspaceRoster').append(person);
-   officeCards.set(a.id,{person,name,state,color,seed:officeCards.size*1.7,x:26});
-  }
-  if(!s.accounts.length)$('workspaceRoster').append(el('p','workspace-empty','Add an account to populate the workspace.'));
+  workspaceStamp=stamp;
+  for(const [id,ui] of officeCards)if(!ids.has(id)){officeCancel(ui);officeCards.delete(id);}
+  $('workspaceRoster').replaceChildren();
+  s.accounts.forEach((a,index)=>{
+   let ui=officeCards.get(a.id);
+   if(!ui){
+    const person=el('button','workspace-person'),portrait=el('canvas','workspace-portrait'),copy=el('span','workspace-person-copy'),line=el('span','workspace-person-name'),number=el('span','workspace-index'),name=el('strong'),state=el('span','workspace-state');
+    person.type='button';person.dataset.id=a.id;portrait.width=28;portrait.height=36;portrait.setAttribute('aria-hidden','true');
+    line.append(number,name);copy.append(line,state);person.append(portrait,copy);person.onclick=()=>selectOfficeAgent(a.id);
+    ui={id:a.id,person,portrait,number,name,state,appearance:officeAppearance(a.id),hash:officeHash(a.id),position:null,path:[],destination:'desk',nextAct:0,walkCycle:0,work:{},activity:'idle',act:null,pose:null,prop:null,face:null,say:null,tired:false,seen:false,awayCount:0,cheerUntil:0,waveUntil:0,restLane:null};
+    officeCards.set(a.id,ui);drawOfficePerson(portrait.getContext('2d'),14,33,ui.appearance,'south',0,false);
+   }
+   ui.index=index;ui.number.textContent=String(index+1).padStart(2,'0');$('workspaceRoster').append(ui.person);
+  });
+  if(officeSelection&&!ids.has(officeSelection))officeSelection=null;
+  officeLayout=null;officeBackground=null;
  }
- $('workspaceCanvas').hidden=!s.accounts.length;
  let working=0;
  for(const a of s.accounts){
-  const ui=officeCards.get(a.id),work=a.work||{},recent=work.lastFinishedAt&&Date.now()-work.lastFinishedAt<10000;
-  const state=!connected?'offline':work.inFlight>0?'working':recent?'recent':'idle';
-  if(state==='working')working++;
-  ui.person.dataset.state=state;ui.name.textContent=a.label;
-  ui.state.textContent={working:'Working',recent:'Recently active',idle:'Idle',offline:'Unavailable'}[state];
-  ui.person.title=a.label+' — '+(work.lastModel?(state==='working'?'Using ':'Last model: ')+work.lastModel:'No model request yet');
+  const ui=officeCards.get(a.id),prev=ui.activity;ui.label=a.label;ui.work=a.work||{};ui.activity=officeState(ui.work);ui.tired=officeTired(a,s);
+  if(ui.seen&&prev!==ui.activity)officeReact(ui,prev);ui.seen=true;
+  if(ui.activity==='working')working++;
+  ui.person.dataset.state=ui.activity;ui.person.setAttribute('aria-pressed',String(officeSelection===a.id));ui.name.textContent=a.label;ui.state.textContent=officeStateLabel(ui);
+  ui.person.setAttribute('aria-label','Agent '+(ui.index+1)+', '+a.label+', '+officeStateLabel(ui));ui.person.title=a.label+' · '+officeStateLabel(ui)+(ui.work.lastModel?' · '+ui.work.lastModel:'');
  }
- $('workspaceCount').textContent=s.accounts.length?working+' working · '+s.accounts.length+' accounts':'No accounts';
+ $('workspaceCount').textContent=s.accounts.length?(connected?working+' working · '+s.accounts.length+' here':s.accounts.length+' accounts · disconnected'):'No accounts yet';
+ $('workspaceEmpty').hidden=!!s.accounts.length;
+ $('workspaceCanvas').setAttribute('aria-label','Shared office with '+s.accounts.length+' account characters; '+working+' currently handling model requests. Break-time chatter and games are decorative. Use the account buttons below to inspect each character.');
+ updateOfficeInspector();updateOfficeMotion();
 }
-function drawPerson(ctx,x,y,color,step,working){
- x=Math.round(x);y=Math.round(y);const p=(dx,dy,w,h,c)=>{ctx.fillStyle=c;ctx.fillRect(x+dx,y+dy,w,h);};
- p(2,28,14,2,'#211d29');
- p(4,1,10,4,'#2a2631');p(3,4,12,3,'#332b35');
- p(4,7,10,8,'#d6aa91');p(6,10,1,1,'#332b35');p(12,10,1,1,'#332b35');
- p(3,15,12,10,color);p(5,17,8,2,'#e6d8cb');
- p(1,16,2,9,'#d6aa91');p(15,16,2,9,'#d6aa91');
- if(working){p(15,20+(step?1:0),5,3,'#d6aa91');p(18,22+(step?1:0),3,2,'#d6aa91');}
- p(4,25,5,3,'#48516a');p(10,25,5,3,'#48516a');
- p(4,28+(step&&!working?1:0),5,2,'#282d3a');p(10,28+(!step&&!working?1:0),5,2,'#282d3a');
+function selectOfficeAgent(id){officeSelection=officeSelection===id?null:id;for(const ui of officeCards.values())ui.person.setAttribute('aria-pressed',String(officeSelection===ui.id));updateOfficeInspector();}
+function updateOfficeInspector(){
+ const ui=officeCards.get(officeSelection);$('workspaceClear').hidden=!ui;
+ if(!ui){$('workspaceInspectorLine').textContent='Select a character or an account above.';$('workspaceInspectorModel').textContent='Typing follows live model requests in your CLI. Break-time play is decorative.';return;}
+ const label=el('strong','',ui.label),number=el('span','workspace-index','Agent '+String(ui.index+1).padStart(2,'0')),state=el('span','workspace-inspector-state',officeStateLabel(ui));
+ $('workspaceInspectorLine').replaceChildren(number,label,state);
+ const model=ui.work.lastModel,finished=ui.work.lastFinishedAt;
+ let text=ui.activity==='offline'?'The pool is unavailable. Activity will reconnect with the dashboard.':model?(ui.activity==='working'?'Current model: ':'Last model: ')+model+(ui.activity!=='working'&&finished?' · Last active '+new Date(finished).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}):''):'No model request observed for this account yet.';
+ if(ui.activity==='idle'&&ui.act)text+=' · On a break, '+(OFFICE_ACT_LABEL[ui.act.kind]||'wandering')+' (decorative)';
+ if(ui.tired&&ui.activity!=='offline')text+=' · Quota is low or blocked, so this character looks tired.';
+ $('workspaceInspectorModel').textContent=text;
 }
-function drawOffice(time){
- const accounts=current?.accounts||[];if(!accounts.length)return;
- const canvas=$('workspaceCanvas'),columns=Math.min(accounts.length,5,Math.max(1,Math.floor($('workspace').clientWidth/190)));
- const rows=Math.ceil(accounts.length/columns),width=columns*160,height=70+rows*86;
- if(canvas.width!==width||canvas.height!==height){canvas.width=width;canvas.height=height;}
- const ctx=canvas.getContext('2d',{alpha:false}),moving=!reducedMotion.matches,step=moving&&Math.floor(time/260)%2;
- const r=(x,y,w,h,c)=>{ctx.fillStyle=c;ctx.fillRect(x,y,w,h);};
- const room={sage:['#34453e','#41544a','#778d7b','#506a5b','#5e7867'],ocean:['#2b4654','#365564','#7295a4','#496b79','#567785'],
-  plum:['#393143','#41384b','#665568','#57465b','#604d61'],midnight:['#30394d','#3c465a','#68758a','#4b566e','#56617a'],
-  sand:['#dfd5c3','#d4c8b4','#ad9d88','#c2b29d','#b4a48f'],paper:['#d8e2e2','#c9d8d9','#9cb1b4','#b9cacc','#aebfc2']}[document.documentElement.dataset.theme]||['#393143','#41384b','#665568','#57465b','#604d61'];
- r(0,0,width,height,room[3]);r(0,0,width,53,room[0]);
- for(let x=0;x<width;x+=20)for(let y=0;y<53;y+=20)r(x+(y%40?10:0),y,1,20,room[1]);
- r(0,53,width,4,room[2]);
- for(let x=0;x<width;x+=20)for(let y=57;y<height;y+=20)r(x+(y%40?10:0),y,19,1,room[4]);
- // One continuous room with original pixel art windows and shelves.
- for(let x=14;x<width;x+=320){
-  r(x,9,42,34,'#201e2d');r(x+4,13,34,26,'#65809a');r(x+4,28,34,11,'#46536e');
-  r(x+7,29,6,10,'#39465f');r(x+20,24,8,15,'#39465f');r(x+32,30,4,9,'#39465f');
-  r(x+20,13,2,26,'#d7c9b6');r(x+4,25,34,2,'#d7c9b6');
-  r(x+104,16,28,3,'#a38a79');r(x+107,8,4,8,'#9fb3aa');r(x+113,10,4,6,'#ba8da0');r(x+119,7,5,9,'#c9ad7f');
+function updateOfficeMotion(){
+ const b=$('workspaceMotion'),off=reducedMotion.matches;b.disabled=off;b.textContent=off?'Motion reduced':officePaused?'Resume motion':'Pause motion';b.setAttribute('aria-pressed',String(officePaused||off));b.title=off?'Follows your system’s reduced motion preference':'Pause decorative movement. Live activity still updates.';
+ const idle=officePaused||off||!connected||!officeCards.size;for(const f of document.querySelectorAll('[data-fun]'))f.disabled=idle;
+ const chat=$('workspaceChat');chat.textContent=officeChatOn?'Chat: on':'Chat: off';chat.setAttribute('aria-pressed',String(officeChatOn));
+}
+$('workspaceMotion').onclick=()=>{officePaused=!officePaused;try{localStorage.setItem(OFFICE_MOTION_STORAGE,officePaused?'paused':'playing');}catch{}updateOfficeMotion();};
+$('workspaceChat').onclick=()=>{officeChatOn=!officeChatOn;try{localStorage.setItem(OFFICE_CHAT_STORAGE,officeChatOn?'on':'off');}catch{}if(!officeChatOn){officeTicker('');for(const ui of officeCards.values())if(ui.say)ui.say.text=null;}updateOfficeMotion();};
+for(const f of document.querySelectorAll('[data-fun]'))f.onclick=()=>officeSendTo(f.dataset.fun);
+$('workspaceClear').onclick=()=>selectOfficeAgent(officeSelection);
+reducedMotion.addEventListener('change',updateOfficeMotion);
+function officePalette(){
+ const theme=document.documentElement.dataset.theme,light=['sand','paper'].includes(theme);
+ const walls={plum:['#4a414f','#564c59','#776477'],sage:['#414c44','#4c574d','#758371'],ocean:['#3d4b55','#4a5962','#71858b'],midnight:['#3b424f','#464e5b','#6b7785'],sand:['#a99d8d','#b6a999','#d9c9ac'],paper:['#8f9c9e','#a0adae','#c4d0c9']}[theme]||['#4a414f','#564c59','#776477'];
+ return {void:light?'#ddd8d0':'#211e27',wall:walls[0],wallLight:walls[1],trim:walls[2],floor:light?'#bda68b':'#877366',plank:light?'#c5ae91':'#8d796b',grain:light?'#b69f84':'#7e6c60',seam:light?'#a99179':'#766357',rug:light?'#8a8589':'#665866',rugLine:light?'#a39a9c':'#796977',rugEdge:light?'#746d76':'#514554',desk:light?'#d7b78a':'#c0a17c',deskLight:light?'#e5c797':'#d3b18a',deskDark:light?'#b88f68':'#95765d',ink:'#302e39',paper:'#d9d2b9',metal:'#515460',green:'#7f9d7b',leaf:'#9bb58a',shadow:'#1d172832',text:light?'#e8dfd1':'#d7c9b8'};
+}
+function makeOfficeLayout(count){
+ const available=$('workspaceStage').clientWidth;
+ const maxColumns=available<470?2:available<760?3:5;
+ const columns=Math.min(maxColumns,Math.max(2,Math.ceil(Math.sqrt(Math.max(count,1)*1.8))));
+ const rows=Math.max(1,Math.ceil(count/columns)),width=Math.max(available<470?480:available<760?580:700,60+columns*116+196),height=Math.max(372,96+rows*108+66);
+ const areaRight=width-196,areaLeft=32,cell=(areaRight-areaLeft)/columns,sx=areaRight+24,loungeY=193,bottom=height-34;
+ const zones=[
+  {kind:'coffee',label:'Coffee machine',hint:'Click to send someone for coffee',x:sx,y:76,w:84,h:64},
+  {kind:'arcade',label:'Arcade cabinet',hint:'Click to send someone to play',x:sx+94,y:94,w:24,h:46},
+  {kind:'vending',label:'Vending machine',hint:'Click to send someone for a snack',x:sx+122,y:92,w:26,h:48},
+  {kind:'water',label:'Water cooler',hint:'Click to send someone for a drink',x:sx+112,y:163,w:20,h:44},
+  {kind:'couch',label:'Sofa',hint:'Click to send someone to relax',x:sx-3,y:loungeY-4,w:92,h:68},
+  {kind:'read',label:'Bookcase',hint:'Click to send someone to read',x:sx+92,y:229,w:58,h:22},
+  {kind:'pong',label:'Ping-pong table',hint:'Click to start a match',x:sx+44,y:bottom-34,w:66,h:30}];
+ const sp={
+  coffee:[{id:'coffee0',x:sx+20,y:158,dir:'north'},{id:'coffee1',x:sx+63,y:158,dir:'north'}],
+  arcade:[{id:'arcade',x:sx+106,y:157,dir:'north'}],vending:[{id:'vending',x:sx+135,y:157,dir:'north'}],
+  water:[{id:'cooler0',x:sx+102,y:218,dir:'east',lane:158},{id:'cooler1',x:sx+142,y:218,dir:'west',lane:158}],
+  couch:[{id:'couch0',x:sx+25,y:loungeY+33,dir:'south',lane:loungeY+41,pose:'sit'},{id:'couch1',x:sx+53,y:loungeY+33,dir:'south',lane:loungeY+41,pose:'sit'}],
+  read:[{id:'read',x:sx+100,y:266,dir:'north',lane:158}],plant:[{id:'plant',x:50,y:bottom,dir:'west'}],
+  pong:[{id:'pong0',x:sx+30,y:bottom-12,dir:'east',lane:bottom},{id:'pong1',x:sx+124,y:bottom-12,dir:'west',lane:bottom}]};
+ return {width,height,columns,rows,areaRight,aisleX:areaRight+8,sx,loungeY,bottom,zones,spots:sp,table:{x:sx+46,y:bottom-30,w:62,h:22},stations:Array.from({length:count},(_,i)=>{const row=Math.floor(i/columns),inRow=Math.min(columns,count-row*columns);return {x:Math.round(areaLeft+cell*(i%columns+.5+(columns-inRow)/2)),y:Math.round(102+row*108),row};}),key:[count,columns,width,height,document.documentElement.dataset.theme].join(':')};
+}
+function buildOfficeBackground(layout,p){
+ const layer=document.createElement('canvas');layer.width=layout.width;layer.height=layout.height;
+ const c=layer.getContext('2d'),{width:w,height:h,areaRight:right,sx,loungeY,bottom}=layout;
+ const r=(x,y,ww,hh,color)=>{c.fillStyle=color;c.fillRect(Math.round(x),Math.round(y),ww,hh);};
+ r(0,0,w,h,p.void);
+ // A continuous room, with a raised back wall and a shallow front edge.
+ r(17,20,w-28,h-27,'#16121e40');r(12,14,w-26,59,p.wall);r(16,17,w-34,4,p.wallLight);
+ for(let x=18;x<w-18;x+=37){r(x,23,1,42,p.wallLight);r(x+1,23,1,42,'#211c2816');}
+ r(12,70,w-26,h-92,p.floor);
+ for(let y=74;y<h-23;y+=14){r(13,y,w-28,12,Math.floor(y/14)%3===0?p.plank:p.floor);r(13,y+12,w-28,1,p.seam);
+  for(let x=22+Math.floor(y/14)%3*27;x<w-22;x+=94){r(x,y,1,12,p.seam);r(x+9,y+5,17,1,p.grain);r(x+50,y+8,23,1,p.grain);}}
+ r(12,68,w-26,3,p.trim);r(12,71,w-26,2,'#201b2929');r(12,70,4,h-88,p.trim);r(w-18,70,4,h-88,p.trim);
+ r(12,h-22,w-26,6,p.deskDark);r(16,h-22,w-34,2,p.trim);r(18,h-16,w-34,2,'#100d1828');
+ // Deep windows, skyline, curtain folds and small sill plants.
+ const windows=Math.max(1,Math.floor((right-30)/154));
+ for(let i=0;i<windows;i++){
+  const x=36+i*(right-42)/windows;
+  r(x+3,25,84,41,'#211e2b55');r(x,21,84,42,p.ink);r(x+4,24,76,34,'#718897');r(x+4,24,76,7,'#91a0a6');r(x+4,49,76,9,'#5a6376');
+  for(let b=0;b<6;b++){const bx=x+6+b*13,by=40+(i+b)%4*3;r(bx,by,10,58-by,'#50596c');r(bx+3,by+4,2,2,'#b8b49d');}
+  r(x+40,24,3,36,'#bcada0');r(x+4,39,76,2,'#bcada0');r(x-3,62,90,4,p.deskLight);r(x-1,66,87,2,p.deskDark);
+  r(x-5,20,5,42,p.rug);r(x+84,20,5,42,p.rug);r(x-3,21,1,39,p.rugLine);r(x+87,21,1,39,p.rugLine);
+  drawOfficePlant(c,x+69,66,p,0);
  }
- accounts.forEach((account,i)=>{
-  const ui=officeCards.get(account.id),state=ui.person.dataset.state,working=state==='working',recent=state==='recent';
-  const ox=(i%columns)*160,oy=70+Math.floor(i/columns)*86;
-  const target=working||recent?61:24+(moving?Math.sin(time/1800+ui.seed)*8:0);
-  ui.x=moving?ui.x+(target-ui.x)*.16:target;
-  ctx.save();ctx.translate(ox,oy);
-  r(9,11,135,47,'#463b4c55');
-  r(80,26,51,7,'#a48677');r(84,33,5,17,'#745b5b');r(123,33,5,17,'#745b5b');
-  r(94,3,31,22,'#252536');r(97,6,25,16,working?'#789f9e':'#4a6175');
-  r(106,25,5,2,'#262837');r(94,23,24,2,'#c4ada2');r(119,21,5,5,'#d1b4a3');
+ // Wall clock and noticeboard.
+ const cx=sx+128;r(cx-13,25,27,28,p.deskDark);r(cx-11,27,23,23,p.paper);r(cx-8,30,17,17,'#c6c0ab');r(cx,32,1,9,p.ink);r(cx-5,40,6,1,p.ink);r(cx-1,39,3,3,p.ink);r(cx-1,28,2,2,p.ink);r(cx-1,47,2,2,p.ink);r(cx-10,38,2,2,p.ink);r(cx+9,38,2,2,p.ink);
+ r(sx-2,53,87,4,p.deskDark);r(sx,37,9,16,'#9d7b87');r(sx+11,40,7,13,'#8faaa5');r(sx+21,35,7,18,'#bea170');r(sx+31,42,8,11,'#7b879b');r(sx+41,38,7,15,'#a899ac');r(sx+54,41,6,12,'#c0a2a8');r(sx+63,36,8,17,'#93a89a');
+ // One generous work rug rather than a collection of separate cubicles.
+ r(26,88,right-42,layout.rows*108+5,'#322a3433');r(24,85,right-42,layout.rows*108+5,p.rugEdge);r(28,89,right-50,layout.rows*108-3,p.rug);r(31,92,right-56,1,p.rugLine);r(31,layout.rows*108+85,right-56,1,p.rugLine);
+ for(let y=97;y<layout.rows*108+84;y+=12)for(let x=36;x<right-31;x+=12){r(x+(Math.floor(y/12)%2)*4,y,2,1,p.rugLine);}
+ // Coffee corner with cabinetry, cups, a coffee machine and a water carafe.
+ r(sx+3,105,86,37,p.shadow);r(sx,97,84,12,p.deskLight);r(sx,109,84,29,p.deskDark);r(sx+3,111,36,23,p.desk);r(sx+43,111,37,23,p.desk);r(sx+31,117,4,2,p.ink);r(sx+47,117,4,2,p.ink);
+ r(sx+8,79,24,19,p.ink);r(sx+10,81,20,2,p.metal);r(sx+11,84,18,10,p.metal);r(sx+14,86,5,3,'#a6b59e');r(sx+22,86,5,2,'#6f7480');r(sx+22,89,5,2,'#6f7480');r(sx+17,96,9,6,p.paper);r(sx+25,98,3,3,p.paper);
+ r(sx+42,95,8,6,'#b78b8c');r(sx+49,96,3,3,'#b78b8c');r(sx+58,93,7,8,'#97aaa8');r(sx+58,90,7,3,'#c9c9b4');r(sx+70,98,9,3,p.paper);
+ drawOfficePlant(c,sx+80,94,p,1);
+ // Arcade cabinet and vending machine.
+ const ax=sx+94,ay=98,vx=sx+122,vy=94,snack=['#d98b7a','#e3c46f','#a6d6a0','#8fb4d6','#c98aa6'];
+ r(ax+1,140,25,3,p.shadow);r(ax,ay,24,42,'#3f4478');r(ax,ay,2,42,'#353a69');r(ax+22,ay,2,42,'#353a69');
+ r(ax+2,ay-2,20,6,'#c98aa6');r(ax+4,ay,16,1,'#f0d7a0');r(ax+6,ay+2,12,1,'#f0d7a0');r(ax+3,ay+8,18,15,p.ink);r(ax+4,ay+9,16,13,'#1c2540');
+ r(ax+1,ay+25,22,7,'#2b2e57');r(ax+5,ay+23,2,4,'#d28c88');r(ax+4,ay+22,4,2,'#d28c88');r(ax+12,ay+27,2,2,'#e6c47a');r(ax+16,ay+27,2,2,'#7fb3a5');r(ax+19,ay+27,2,2,'#c98aa6');r(ax+3,ay+33,18,9,'#2f3361');r(ax+8,ay+36,8,3,'#222648');
+ r(vx+1,140,28,3,p.shadow);r(vx,vy,26,46,'#5e7e86');r(vx,vy,2,46,'#4d6c74');r(vx+24,vy,2,46,'#4d6c74');r(vx+3,vy+3,16,32,p.ink);
+ for(let row=0;row<4;row++){for(let col=0;col<3;col++)r(vx+4+col*5,vy+5+row*8,4,6,snack[(row*2+col)%5]);r(vx+4,vy+11+row*8,14,1,'#5b5a68');}
+ r(vx+20,vy+4,4,14,'#3f4455');r(vx+21,vy+6,2,2,'#d28c88');r(vx+21,vy+10,2,2,'#e6c47a');r(vx+21,vy+14,2,2,'#7fb3a5');r(vx+3,vy+37,16,7,p.ink);r(vx+4,vy+38,14,5,'#1a1822');r(vx+20,vy+36,4,8,'#40455a');
+ // Water cooler.
+ const wx=sx+114;r(wx-1,205,19,3,p.shadow);r(wx,186,16,20,'#d6d4dc');r(wx,186,16,2,'#eceaf0');r(wx+1,188,1,18,'#b9b7c4');r(wx+4,190,3,2,'#6f95b8');r(wx+9,190,3,2,'#d98b7a');r(wx+3,196,10,5,'#bfbdc8');r(wx+2,168,12,18,'#9ec4d9');r(wx+3,169,2,15,'#c9e2ee');r(wx+4,165,8,4,'#8bb2c8');
+ // Lounge remains part of the same floor plan.
+ r(sx-3,loungeY-4,92,68,'#696477');r(sx,loungeY-1,86,62,'#777181');r(sx+2,loungeY+3,82,1,'#948796');r(sx+2,loungeY+55,82,1,'#948796');
+ r(sx+6,loungeY+8,64,23,'#3b4c4c');r(sx+4,loungeY+15,70,21,'#57716a');r(sx+10,loungeY+15,27,16,'#718c7e');r(sx+41,loungeY+15,27,16,'#6b8579');r(sx+4,loungeY+17,6,24,'#49645e');r(sx+68,loungeY+17,6,24,'#49645e');r(sx+12,loungeY+37,54,3,'#3b4c4c');
+ r(sx+22,loungeY+45,42,11,p.shadow);r(sx+20,loungeY+42,42,10,p.deskLight);r(sx+24,loungeY+52,3,6,p.deskDark);r(sx+54,loungeY+52,3,6,p.deskDark);r(sx+26,loungeY+43,13,5,'#897d9e');r(sx+47,loungeY+43,5,5,p.paper);
+ // A low bookcase, a ping-pong corner and plants make the circulation space feel inhabited.
+ const shx=sx+94,shy=232;
+ r(shx,shy,54,18,p.deskDark);r(shx+2,shy+2,50,14,p.ink);
+ for(let i=0;i<8;i++){const colors=['#8a9d93','#b39187','#9a89a5','#bfa873','#8e9aaf'];r(shx+4+i*6,shy+4+(i%3),4,10-(i%3),colors[i%5]);r(shx+4+i*6,shy+6+(i%3),4,1,p.paper);}
+ r(shx-1,shy-2,56,3,p.deskLight);drawOfficePlant(c,shx+44,shy-2,p,0);
+ const t=layout.table;
+ r(sx+10,t.y-8,134,t.h+17,p.rugEdge);r(sx+12,t.y-6,130,t.h+13,p.rug);
+ r(t.x+2,t.y+t.h,t.w,6,p.shadow);r(t.x+3,t.y+t.h,3,5,'#2a2f3a');r(t.x+t.w-6,t.y+t.h,3,5,'#2a2f3a');
+ r(t.x,t.y,t.w,t.h,'#23414a');r(t.x+1,t.y+1,t.w-2,t.h-4,'#3f7f86');r(t.x+1,t.y+t.h-3,t.w-2,3,'#2b535b');
+ r(t.x+3,t.y+3,t.w-6,1,'#e6e3d3');r(t.x+3,t.y+t.h-7,t.w-6,1,'#e6e3d3');r(t.x+3,t.y+3,1,t.h-9,'#e6e3d3');r(t.x+t.w-4,t.y+3,1,t.h-9,'#e6e3d3');r(t.x+t.w/2,t.y+2,1,t.h-6,'#e6e3d3');
+ r(t.x+t.w/2-1,t.y-3,2,t.h-2,'#d7d3c4');r(t.x+t.w/2-1,t.y-3,2,1,'#f0ecde');
+ drawOfficePlant(c,28,h-32,p,2);drawOfficePlant(c,w-30,h-32,p,2);
+ // Stations share the rug and aisles; every desk has small, individual details.
+ for(let i=0;i<layout.stations.length;i++)drawOfficeDesk(c,layout.stations[i],i,p);
+ return layer;
+}
+function drawOfficePlant(c,x,y,p,size){
+ const r=(dx,dy,w,h,color)=>{c.fillStyle=color;c.fillRect(Math.round(x+dx),Math.round(y+dy),w,h);};
+ const large=size===2;
+ r(-6,0,14,3,p.shadow);r(large?-6:-4,large?-9:-6,large?13:9,large?10:7,'#aa8370');r(large?-7:-5,large?-10:-7,large?15:11,2,'#c7a48a');
+ r(-1,large?-27:-18,2,large?18:12,p.green);r(-7,large?-24:-15,7,5,p.green);r(1,large?-28:-18,7,5,p.leaf);r(-10,large?-18:-11,10,5,p.leaf);r(0,large?-19:-12,10,5,p.green);r(-4,large?-32:-21,6,6,p.leaf);r(-6,large?-22:-14,2,2,'#b0c29a');
+}
+function drawOfficeDesk(c,s,index,p){
+ const x=s.x-45,y=s.y,r=(dx,dy,w,h,color)=>{c.fillStyle=color;c.fillRect(x+dx,y+dy,w,h);};
+ r(3,8,91,29,p.shadow);r(2,28,7,15,p.deskDark);r(80,28,7,15,p.deskDark);r(0,0,90,29,p.deskDark);r(0,0,90,25,p.desk);r(1,1,88,2,p.deskLight);r(0,24,90,3,p.deskLight);r(9,7,17,1,'#aa8a69');r(65,19,14,1,'#aa8a69');
+ r(30,-11,33,22,p.ink);r(33,-8,27,16,'#414956');r(44,11,5,5,p.metal);r(37,15,19,2,p.ink);r(32,19,31,5,'#62616b');r(34,20,26,1,'#aca6a0');r(64,19,4,5,'#bdb4a4');
+ const accessory=index%4;
+ if(accessory===0){r(10,15,8,7,'#8eaaa3');r(17,16,3,4,'#8eaaa3');r(10,15,8,1,p.paper);r(72,6,9,6,'#d1b682');}
+ if(accessory===1){r(8,13,16,9,'#897a98');r(10,15,12,1,p.paper);r(76,17,7,6,'#bb8f8a');r(81,18,3,3,'#bb8f8a');}
+ if(accessory===2){r(10,10,3,10,p.ink);r(8,5,9,6,'#b2a184');r(10,20,10,2,p.ink);r(72,13,12,8,p.paper);r(74,15,7,1,'#989782');}
+ if(accessory===3){r(10,8,11,9,'#a098b0');r(10,17,11,2,p.paper);r(74,12,6,9,'#a2b19a');r(79,14,3,4,'#a2b19a');}
+ r(5,29,17,10,'#665968');r(5,29,17,1,'#958193');c.font='7px ui-monospace,monospace';c.fillStyle='#e3d7cc';c.fillText(String(index+1).padStart(2,'0'),x+9,y+37);
+ // Chair is drawn below the seated sprite, facing the monitor.
+ r(33,46,27,6,p.shadow);r(42,40,4,12,p.ink);r(33,51,25,2,p.ink);r(32,31,28,16,'#3c3e4b');r(34,33,24,12,'#606174');r(34,44,24,2,'#767486');
+}
+// fx: {pose:'sit'|'nap'|'cheer'|'wave'|'stretch', talk:boolean}. Poses only change arms, legs and eyes.
+function drawOfficePerson(c,x,y,a,direction,frame,seated,fx){
+ fx=fx||{};x=Math.round(x);y=Math.round(y);
+ const r=(dx,dy,w,h,color)=>{c.fillStyle=color;c.fillRect(x+dx,y+dy,w,h);};
+ const side=direction==='east'||direction==='west',back=direction==='north',sit=fx.pose==='sit'||fx.pose==='nap',up=fx.pose==='cheer'||fx.pose==='stretch',wave=fx.pose==='wave';
+ c.fillStyle='#251c2d35';c.beginPath();c.ellipse(x,y-1,seated?9:8,2.5,0,0,Math.PI*2);c.fill();
+ const stride=!seated&&!sit&&frame?2:0;
+ if(sit){y+=3;r(-6,-9,5,4,a.pants);r(1,-9,5,4,a.pants);r(-6,-5,5,3,'#302f39');r(1,-5,5,3,'#302f39');}
+ else{r(-6,-9+stride,5,7,a.pants);r(1,-9-stride,5,7,a.pants);r(-6,-3+stride,5,3,'#302f39');r(1,-3-stride,5,3,'#302f39');}
+ r(-7,-20,14,12,a.shirt);r(-5,-19,2,9,'#ffffff12');r(5,-17,2,7,'#15172324');r(-3,-22,6,3,a.skin);
+ if(seated){r(-10,-23+(frame?1:0),4,7,a.skin);r(7,-24+(frame?0:1),4,7,a.skin);r(-8,-24+(frame?1:0),3,2,a.skin);r(8,-25+(frame?0:1),3,2,a.skin);}
+ else if(up){const k=frame?1:0;r(-10,-30-k,3,10,a.shirt);r(-10,-33-k,3,3,a.skin);r(8,-30-(1-k),3,10,a.shirt);r(8,-33-(1-k),3,3,a.skin);}
+ else if(wave){const k=frame?1:0;r(-9,-19,3,8,a.shirt);r(-9,-12,3,4,a.skin);r(8,-31-k,3,11,a.shirt);r(8,-34-k,3,3,a.skin);}
+ else if(sit){r(-9,-19,3,8,a.shirt);r(-9,-12,3,4,a.skin);r(7,-19,3,8,a.shirt);r(7,-12,3,4,a.skin);}
+ else{r(-9,-19+(frame?1:0),3,8,a.shirt);r(-9,-12+(frame?1:0),3,4,a.skin);r(7,-19-(frame?1:0),3,8,a.shirt);r(7,-12-(frame?1:0),3,4,a.skin);}
+ // Six hairstyles, several skin tones, profiles and occasional glasses.
+ const hy=fx.pose==='nap'?1:0;
+ r(-5,-30+hy,10,10,a.skin);r(-6,-29+hy,12,5,a.hair);r(-4,-32+hy,8,3,a.hair);r(-6,-25+hy,2,4,a.hair);
+ if(a.style===1){r(-7,-29+hy,2,11,a.hair);r(5,-28+hy,2,11,a.hair);r(-6,-19,3,2,a.hair);}
+ if(a.style===2){r(-7,-30+hy,14,7,a.hair);r(-8,-27+hy,2,6,a.hair);r(6,-27+hy,2,6,a.hair);r(-5,-33+hy,10,3,a.hair);}
+ if(a.style===3){r(4,-27+hy,4,10,a.hair);r(6,-20+hy,3,5,a.hair);r(-4,-31+hy,6,2,'#ffffff16');}
+ if(a.style===4){r(-6,-31+hy,12,6,'#b197a2');r(-7,-26+hy,14,2,'#d0b7ba');}
+ if(a.style===5){r(-6,-31+hy,3,2,a.hair);r(0,-33+hy,4,3,a.hair);r(4,-30+hy,3,3,a.hair);r(-5,-26+hy,2,3,a.hair);}
+ if(back){r(-5,-27+hy,10,6,a.hair);r(-3,-20,6,1,a.skin);}
+ else if(side){const facing=direction==='east'?1:-1;r(facing===1?5:-7,-25+hy,2,3,a.skin);r(facing===1?3:-4,-26+hy,fx.pose==='nap'?3:1,1,'#302b35');r(facing===1?-5:3,-27+hy,3,5,a.hair);if(a.glasses)r(facing===1?2:-5,-27+hy,3,2,'#5d525e');if(fx.talk&&frame)r(facing===1?5:-6,-22+hy,2,1,'#aa7767');}
+ else if(fx.pose==='nap'){r(-4,-24+hy,3,1,'#302b35');r(2,-24+hy,3,1,'#302b35');r(0,-21+hy,2,1,'#aa7767');}
+ else{r(-3,-25+hy,1,1,'#302b35');r(3,-25+hy,1,1,'#302b35');r(-1,-22+hy,3,fx.talk&&frame?2:1,'#aa7767');if(a.glasses){r(-4,-26,4,3,'#5a505b');r(1,-26,4,3,'#5a505b');r(0,-25,1,1,'#5a505b');r(-3,-25,2,1,a.skin);r(2,-25,2,1,a.skin);}}
+}
+// Routes follow shared lanes: row aisles, the east aisle and the bottom walkway. `target.lane` is the lane to travel along before stepping in.
+function officeRoute(ui,target,place){
+ const l=officeLayout,p=ui.position,s=ui.station,home=place==='desk',lane=home?s.y+73:target.lane??target.y,pts=[];
+ const lanes=Array.from({length:l.rows},(_,row)=>175+row*108).concat(l.bottom),inDesks=p.x<l.aisleX-4;
+ const exitY=inDesks?lanes.reduce((best,y)=>Math.abs(p.y-y)<Math.abs(p.y-best)?y:best,lanes[0]):ui.path.length?p.y:(ui.restLane??p.y);
+ pts.push({x:p.x,y:exitY});
+ if(inDesks&&target.x<l.aisleX-4&&exitY===lane)pts.push({x:target.x,y:lane});
+ else pts.push({x:l.aisleX,y:exitY},{x:l.aisleX,y:lane},{x:target.x,y:lane});
+ pts.push({x:target.x,y:target.y});
+ ui.path=pts.filter((point,i)=>{const previous=i?pts[i-1]:p;return Math.hypot(point.x-previous.x,point.y-previous.y)>1;});
+ ui.destination=home?'desk':'away';ui.restLane=home?null:target.lane??null;
+}
+const officeFree=ui=>ui.activity==='idle'&&!ui.act&&!ui.path.length&&!!ui.position&&connected;
+const officeClaimed=id=>officeSpots.has(id);
+function officeRelease(ui){
+ const a=ui.act;if(a?.spots)for(const id of a.spots)if(officeSpots.get(id)===ui.id)officeSpots.delete(id);
+ for(const m of Object.values(officeMachines))if(m.owner===ui.id){m.mode='idle';m.owner=null;}
+ ui.act=null;ui.pose=null;ui.prop=null;ui.face=null;
+}
+function officeEndGroup(g){
+ officeGroups.delete(g);
+ for(const m of g.members)if(m.act?.g===g){officeRelease(m);m.nextAct=officeClock+officeRnd(1.5,4);}
+}
+function officeCancel(ui){
+ const a=ui.act;if(!a)return;
+ if(a.g)officeEndGroup(a.g);else{officeRelease(ui);ui.nextAct=officeClock+officeRnd(4,10);}
+}
+function officeFinishAct(ui){
+ const kind=ui.act.kind;officeRelease(ui);ui.awayCount=kind==='desk'?0:ui.awayCount+1;
+ ui.nextAct=officeClock+(kind==='desk'?officeRnd(7,16)+ui.hash%6:officeRnd(1.5,4));
+}
+function officeSteps(ui,a){
+ const m=officeMachines,R=officeRnd,tired=ui.tired,mach=(name,mode)=>()=>{m[name].mode=mode;m[name].t0=officeClock;m[name].owner=ui.id;};
+ switch(a.kind){
+  case 'coffee':{
+   if(a.spot.id!=='coffee0')return [[R(5,8),{prop:'cup',emote:'heart'}]];
+   const jam=Math.random()<.18;
+   return [...(jam?[[2.6,{fn:mach('coffee','jam'),say:'It is jammed!',pose:'wave'}]]:[]),[3.4,{fn:mach('coffee','brew')}],[1.3,{fn:mach('coffee','ready'),prop:'cup'}],[R(5,8),{prop:'cup',say:tired?'Ahh... better':null,emote:tired?null:'heart'}]];}
+  case 'arcade':{const win=Math.random()<.5;return [[R(8,13),{fn:mach('arcade','play'),pose:'play'}],[2.4,win?{fn:mach('arcade','win'),pose:'cheer',say:'High score!',emote:'star'}:{fn:mach('arcade','over'),say:'Game over...',emote:'sweat'}]];}
+  case 'vending':{const stuck=Math.random()<.25;return [[1.8,{fn:mach('vending','pick')}],...(stuck?[[2.6,{fn:mach('vending','stuck'),pose:'wave',say:'Stuck again...'}]]:[]),[1.1,{fn:mach('vending','drop')}],[R(4,6),{fn:mach('vending','idle'),prop:'snack',emote:'heart'}]];}
+  case 'water':return [[R(4,6),{prop:'cup'}]];
+  case 'couch':{const nap=tired||Math.random()<.35;return [[R(10,18),{pose:nap?'nap':'sit',emote:nap?null:'note'}]];}
+  case 'read':return [[R(8,13),{prop:'book'}],[1.8,{emote:'bang',say:'Interesting!'}]];
+  case 'plant':return [[R(5,7),{prop:'can'}],[1.6,{emote:'heart'}]];
+  case 'stroll':return [[R(3,5),{pose:'look'}]];
+  case 'visit':return [[2.6,{say:officePick(OFFICE_VISIT),fn:()=>officeSay(a.target,'Shh, busy!',1.5,null,1.4)}],[2.2,{emote:'ques'}]];
+  default:return [[R(3,5),{pose:Math.random()<.5?'stretch':null,say:tired?officePick(OFFICE_TIRED):officePick(OFFICE_MUTTER)}]];
+ }
+}
+function officeRunStep(ui,a){
+ const step=a.steps[a.i];if(!step){officeFinishAct(ui);return;}
+ const [dur,o]=step;a.until=officeClock+dur;ui.pose=o.pose||null;ui.prop=o.prop||null;o.fn?.();
+ if(o.say||o.emote)officeSay(ui,o.say,Math.min(dur,2.6),o.emote);
+}
+function officeStepAct(ui){
+ const a=ui.act;if(a.g)return;
+ if(a.phase==='go'){a.phase='do';a.steps=officeSteps(ui,a);a.i=0;officeRunStep(ui,a);}
+ else if(officeClock>=a.until){a.i++;officeRunStep(ui,a);}
+}
+function officeMakeGroup(kind,members,spots){
+ if(spots.some(s=>officeClaimed(s.id)))return false;
+ const g={kind,members,spots,phase:'go',born:officeClock,li:0,next:0,u:0,dir:1,pause:0,score:[0,0],lines:kind==='chat'?officePick(OFFICE_CHAT):null};
+ members.forEach((ui,i)=>{officeSpots.set(spots[i].id,ui.id);ui.act={kind,g,slot:i,spots:[spots[i].id],spot:spots[i],phase:'go'};ui.face=spots[i].dir;ui.pose=null;ui.prop=null;officeRoute(ui,spots[i],'away');});
+ officeGroups.add(g);return true;
+}
+function officeUpdateGroups(delta){
+ for(const g of [...officeGroups]){
+  const [a,b]=g.members;
+  if(!officeCards.has(a.id)||!officeCards.has(b.id)||a.activity!=='idle'||b.activity!=='idle'){officeEndGroup(g);continue;}
+  if(g.phase==='go'){
+   if(officeClock-g.born>90){officeEndGroup(g);continue;}
+   if(!a.path.length&&!b.path.length){g.phase='play';g.t0=officeClock;g.next=officeClock+.5;g.u=0;g.until=officeClock+officeRnd(22,30);g.members.forEach((m,i)=>{m.pose=g.spots[i].pose||(g.kind==='pong'?'paddle':null);m.prop=g.kind==='pong'?'paddle':null;});}
+  }else if(g.phase==='play'){g.kind==='chat'?officeChatTick(g):officePongTick(g,delta);}
+  else if(officeClock>=g.until)officeEndGroup(g);
+ }
+}
+function officeChatTick(g){
+ if(officeClock<g.next)return;const [a,b]=g.members;
+ if(g.li>=g.lines.length){g.phase='post';g.until=officeClock+1.8;officeSay(a,null,1.6,'heart');officeSay(b,null,1.6,'note');return;}
+ officeSay(g.members[g.li%2],g.lines[g.li],2.5);g.next=officeClock+2.9;g.li++;
+}
+function officePongTick(g,delta){
+ const [a,b]=g.members;
+ if(g.pause>0){g.pause-=delta;return;}
+ g.u+=delta/.85;
+ if(g.u>=1){
+  g.u-=1;g.dir*=-1;
+  if(Math.random()<.35){const w=Math.random()<.5?0:1;g.score[w]++;g.pause=.9;g.u=0;officeSay(g.members[w],'Point!',1.3,null);
+   if(Math.max(...g.score)>=5||officeClock>g.until){g.phase='post';g.until=officeClock+2.8;const win=g.score[0]===g.score[1]?w:g.score[0]>g.score[1]?0:1;g.win=win;g.members[win].cheerUntil=g.until;officeSay(g.members[win],'GG!',2.4,'star');officeSay(g.members[1-win],'Rematch?',2.4,'sweat');officeBurst(g.members[win].position.x,g.members[win].position.y-30,'spark',8);}}
+ }
+}
+function officeStartAct(ui,forced){
+ const l=officeLayout,sp=l.spots,all=[...officeCards.values()],free=all.filter(o=>o!==ui&&officeFree(o)),busy=all.filter(o=>o.activity==='working'&&o.station&&o!==ui);
+ const T=ui.tired?30:0,R=officeRnd,open=spots=>spots.find(s=>!officeClaimed(s.id));
+ const go=(kind,spot,extra)=>{if(!spot||officeClaimed(spot.id))return false;officeSpots.set(spot.id,ui.id);ui.act={kind,spot,spots:[spot.id],phase:'go',...extra};ui.face=spot.dir;ui.pose=null;ui.prop=null;officeRoute(ui,spot,'away');return true;};
+ const pair=(kind,spotsFor)=>{const o=officePick(free);return !!o&&officeMakeGroup(kind,[ui,o],spotsFor);};
+ const acts={
+  coffee:()=>go('coffee',open(sp.coffee)),arcade:()=>go('arcade',sp.arcade[0]),vending:()=>go('vending',sp.vending[0]),water:()=>go('water',open(sp.water)),
+  couch:()=>go('couch',open(sp.couch)),read:()=>go('read',sp.read[0]),plant:()=>go('plant',sp.plant[0]),
+  stroll:()=>{const x=Math.round(R(70,l.areaRight-70));return go('stroll',{id:'stroll:'+Math.round(x/40),x,y:l.bottom,dir:Math.random()<.5?'east':'west'});},
+  desk:()=>{const s=ui.station,desk={x:s.x,y:s.y+42,id:'desk:'+ui.id,dir:'north'};ui.act={kind:'desk',spot:desk,spots:[],phase:'go'};ui.face='north';officeRoute(ui,desk,'desk');return true;},
+  visit:()=>{const w=officePick(busy);if(!w)return false;const s=w.station,spot={id:'visit:'+w.id,x:s.x+58,y:s.y+42,dir:'west',lane:s.y+73};return go('visit',spot,{target:w});},
+  chat:()=>{
+   const x=Math.round(R(80,l.areaRight-100)),places=[[{...sp.coffee[0],dir:'east'},{...sp.coffee[1],dir:'west'}],[sp.water[0],sp.water[1]],[sp.couch[0],sp.couch[1]],[{id:'aisle:'+Math.round(x/40),x,y:l.bottom,dir:'east'},{id:'aisle:'+Math.round(x/40)+'b',x:x+26,y:l.bottom,dir:'west'}]].sort(()=>Math.random()-.5);
+   for(const place of places)if(pair('chat',place))return true;return false;},
+  pong:()=>pair('pong',sp.pong)};
+ const weights={coffee:20+T,chat:free.length?28:0,pong:free.length?9:0,arcade:8,vending:6,water:6,couch:9+T,read:7,plant:4,stroll:6,visit:busy.length?5:0,desk:ui.awayCount>=2?60:12};
+ const order=forced?[forced]:(()=>{const pool=Object.entries(weights).filter(([,v])=>v>0),out=[];while(pool.length){const total=pool.reduce((n,[,v])=>n+v,0);let t=Math.random()*total,i=0;while(i<pool.length-1&&t>=pool[i][1]){t-=pool[i][1];i++;}out.push(pool.splice(i,1)[0][0]);}return out;})();
+ for(const kind of order)if(acts[kind]?.())return true;
+ if(!forced)ui.nextAct=officeClock+officeRnd(3,8);return false;
+}
+function officeSendTo(kind){
+ if(!officeLayout||!officeMoving)return false;
+ const free=[...officeCards.values()].filter(officeFree);
+ if(free.length<(kind==='pong'||kind==='chat'?2:1)){officeTicker('Everyone is busy at their desks right now.');return false;}
+ const ui=officePick(free);if(officeStartAct(ui,kind))return true;
+ officeTicker('That spot is already taken. Try again in a moment.');return false;
+}
+function updateOfficeAgent(ui,time,delta,moving){
+ const s=ui.station,desk={x:s.x,y:s.y+42},atDesk=ui.activity==='working'||ui.activity==='recent';
+ if(!ui.position){ui.position={...desk};ui.nextAct=officeClock+3+ui.hash%9;}
+ if(!moving){if(atDesk){if(ui.act)officeCancel(ui);ui.position={...desk};ui.path=[];ui.destination='desk';}return;}
+ if(ui.activity==='offline')return;
+ if(atDesk){
+  if(ui.act)officeCancel(ui);ui.nextAct=Math.max(ui.nextAct,officeClock+4+ui.hash%6);
+  const there=Math.hypot(ui.position.x-desk.x,ui.position.y-desk.y)<1;
+  if(!there&&!(ui.path.length&&ui.destination==='desk'))officeRoute(ui,desk,'desk');
+ }else if(!ui.path.length){
+  if(ui.act)officeStepAct(ui);else if(officeClock>=ui.nextAct)officeStartAct(ui);
+ }
+ let remaining=(atDesk?175:40+ui.hash%16)*delta;
+ while(ui.path.length&&remaining>0){const point=ui.path[0],dx=point.x-ui.position.x,dy=point.y-ui.position.y,distance=Math.hypot(dx,dy);
+  if(distance<=remaining){ui.position={...point};ui.path.shift();remaining-=distance;}else{ui.position.x+=dx/distance*remaining;ui.position.y+=dy/distance*remaining;remaining=0;}
+  ui.direction=Math.abs(dx)>Math.abs(dy)?dx>0?'east':'west':dy>0?'south':'north';ui.walkCycle+=delta;
+ }
+ if(!ui.path.length&&(ui.face||ui.destination==='desk'))ui.direction=ui.face||'north';
+}
+// Pixel speech bubbles, with small icon-only bubbles for moods.
+function drawOfficeBubble(c,cx,bottom,say,limit){
+ const e=say.emote&&OFFICE_EMOTES[say.emote];c.font='7px ui-monospace,Consolas,monospace';c.textBaseline='alphabetic';
+ const tw=say.text?Math.ceil(c.measureText(say.text).width):0,ew=e?e.rows[0].length+(say.text?3:0):0,bw=Math.max(14,tw+ew+8),bh=e&&!say.text?e.rows.length+6:12;
+ const bx=Math.round(Math.max(4,Math.min(limit-4-bw,cx-bw/2))),by=Math.round(bottom-bh-3),ink='#2b2634',paper='#f0e8d6';
+ const r=(x,y,w,h,color)=>{c.fillStyle=color;c.fillRect(x,y,w,h);};
+ r(bx+1,by,bw-2,bh,ink);r(bx,by+1,bw,bh-2,ink);r(bx+2,by+1,bw-4,bh-2,paper);r(bx+1,by+2,bw-2,bh-4,paper);
+ const tx=Math.round(Math.max(bx+4,Math.min(bx+bw-8,cx-2)));r(tx,by+bh,4,1,ink);r(tx+1,by+bh+1,2,1,ink);r(tx+1,by+bh,2,1,paper);
+ if(e){const oy=by+Math.round((bh-e.rows.length)/2);c.fillStyle=e.color;e.rows.forEach((row,j)=>{for(let i=0;i<row.length;i++)if(row[i]==='X')c.fillRect(bx+4+i,oy+j,1,1);});}
+ if(say.text){c.fillStyle=ink;c.fillText(say.text,bx+4+ew,by+9);}
+}
+function drawOfficeProps(c,ui,pos,facing,moving){
+ const r=(dx,dy,w,h,color)=>{c.fillStyle=color;c.fillRect(Math.round(pos.x+dx),Math.round(pos.y+dy),w,h);},f=facing;
+ if(ui.prop==='cup'){const x=f>0?8:-13;r(x,-17,5,5,'#ded1b7');r(x+(f>0?4:-2),-16,3,2,'#ded1b7');r(x,-18,5,1,'#765d54');if(moving)r(x+2,-21-Math.floor(officeClock*1.6)%3,1,2,'#d2c3ae77');}
+ if(ui.prop==='snack'){const x=f>0?8:-14;r(x,-17,6,4,'#d2a45f');r(x,-15,6,1,'#c9604f');}
+ if(ui.prop==='book'){r(-6,-18,13,7,'#bea276');r(0,-18,1,7,'#e3d0a9');r(-4,-16,3,1,'#e3d0a9');r(2,-16,3,1,'#e3d0a9');}
+ if(ui.prop==='can'){const x=f>0?7:-15;r(x,-17,8,6,'#6d8fa7');r(x+1,-18,6,1,'#8fb2c6');const sx=f>0?x+8:x-4;r(sx,-20,4,1,'#6d8fa7');r(sx+(f>0?3:0),-19,1,3,'#6d8fa7');if(moving)for(let i=0;i<3;i++)r((f>0?x+12:x-8)+(f>0?1:-1)*(Math.floor(officeClock*5)+i)%4,-17+(Math.floor(officeClock*8)+i*2)%7,1,2,'#9cc6df');}
+ if(ui.prop==='paddle'){
+  const g=ui.act?.g,swing=g&&g.phase==='play'&&((ui.act.slot===0&&(g.dir>0?g.u<.14:g.u>.86))||(ui.act.slot===1&&(g.dir>0?g.u>.86:g.u<.14)));
+  const x=f>0?(swing?10:7):(swing?-16:-10),y=swing?-22:-18;r(f>0?7:-9,-19,3,3,ui.appearance.skin);r(x,y,4,5,'#c9605a');r(x+(f>0?0:3),y+5,1,3,'#8a6a4f');
+ }
+ if(ui.pose==='nap'&&moving){for(let i=0;i<3;i++){const t=(officeClock*.7+i*.33)%1;c.fillStyle='#c7c2e6'+Math.round(255*(1-t)).toString(16).padStart(2,'0');c.font=(i===2?'bold 8':'bold 6')+'px ui-monospace,Consolas,monospace';c.fillText('z',Math.round(pos.x+8+i*3+t*3),Math.round(pos.y-30-t*14-i*3));}}
+ else if(ui.pose==='nap'){c.fillStyle='#c7c2e6';c.font='bold 7px ui-monospace,Consolas,monospace';c.fillText('z',Math.round(pos.x+9),Math.round(pos.y-34));c.fillText('z',Math.round(pos.x+13),Math.round(pos.y-40));}
+}
+function drawOfficeMachines(c,l,p){
+ const r=(x,y,w,h,color)=>{c.fillStyle=color;c.fillRect(Math.round(x),Math.round(y),w,h);},sx=l.sx,clock=officeClock;
+ // Coffee machine: brewing light, stream, steam, a ding when ready and a smoky jam.
+ {const m=officeMachines.coffee,t=clock-m.t0,mode=m.mode;
+  if(mode==='brew'||mode==='ready'||mode==='jam'){
+   const blink=Math.floor(t*3)%2;r(sx+14,86,5,3,mode==='ready'?'#bfe8b6':mode==='jam'?(blink?'#e07a7a':'#8a4a4a'):blink?'#f0c47a':'#b98f4f');
+   if(mode==='brew'){r(sx+20,92,1,5,'#7a5441');r(sx+18,98,7,Math.min(3,1+Math.floor(t)),'#6a4a3b');for(let i=0;i<3;i++)r(sx+12+i*7+Math.round(Math.sin(t*3+i)*1.5),77-(t*9+i*5)%12,1,2,'#e8e1d3');}
+   if(mode==='ready'){r(sx+18,98,7,3,'#6a4a3b');r(sx+34,80,2,2,Math.floor(t*6)%2?'#fff6d0':'#f0e4b0');r(sx+37,84,1,1,'#fff6d0');r(sx+32,84,1,1,'#f0e4b0');}
+   if(mode==='jam'){for(let i=0;i<3;i++)r(sx+13+i*5+Math.round(Math.sin(t*6+i)*2),76-(t*10+i*4)%10,2,2,'#4a4650');if(Math.floor(t*8)%3===0)r(sx+34,88,2,1,'#f0c47a');}
+  }}
+ // Arcade screen.
+ {const m=officeMachines.arcade,t=clock-m.t0,x=sx+98,y=107;
+  if(m.mode==='play'){r(x,y,16,13,'#17223d');const off=Math.floor(t*4)%5,shift=off<3?off:5-off,ship=x+6+Math.round(Math.sin(t*2)*4);
+   for(let i=0;i<4;i++)for(let j=0;j<2;j++)r(x+1+i*3+shift,y+1+j*3,2,2,j?'#d98b7a':'#a6d6a0');r(ship,y+10,3,2,'#e3c46f');r(ship+1,y+9-Math.floor(t*10)%8,1,2,'#ffffff');}
+  else if(m.mode==='win'){r(x,y,16,13,Math.floor(t*7)%2?'#e3c46f':'#c98aa6');r(x+4,y+4,8,5,'#2b2634');r(x+5,y+5,6,1,'#f0e8d6');r(x+5,y+7,4,1,'#f0e8d6');}
+  else if(m.mode==='over'){r(x,y,16,13,'#4a2230');r(x+5,y+3,6,1,'#c9605a');r(x+5,y+6,6,1,'#c9605a');r(x+5,y+9,4,1,'#c9605a');}
+  else{r(x,y,16,13,Math.floor(clock/1.2)%2?'#23305a':'#1c2540');if(Math.floor(clock/.8)%2)r(x+3,y+10,10,1,'#7f8fb8');r(x+7,y+4,2,2,'#c98aa6');}}
+ // Vending machine.
+ {const m=officeMachines.vending,t=clock-m.t0,vx=sx+122,vy=94;
+  if(m.mode==='pick'||m.mode==='stuck'){const on=Math.floor(t*4)%2;r(vx+21,vy+10,2,2,on?'#fff2c8':'#e6c47a');}
+  if(m.mode==='stuck'){const j=Math.floor(t*10)%2;r(vx+9+j,vy+29,5,5,'#d2a45f');r(vx+9+j,vy+31,5,1,'#c9604f');}
+  if(m.mode==='drop'){const u=Math.min(1,t/.9),y=vy+29+u*9;r(vx+8,y,5,5,'#d2a45f');r(vx+8,y+2,5,1,'#c9604f');}}
+ // Water cooler bubbles rise slowly.
+ for(let i=0;i<2;i++)r(sx+120+i*3,184-(clock*5+i*6)%14,1,1,'#eaf5fa');
+ // Ping-pong ball and scoreboard.
+ const g=[...officeGroups].find(o=>o.kind==='pong'&&o.phase!=='go');
+ if(g){
+  const t=l.table,fromX=t.x-4,toX=t.x+t.w+4,u=g.dir>0?g.u:1-g.u,bx=fromX+(toX-fromX)*u,arc=Math.sin(Math.PI*u)*13,by=t.y+t.h/2-6;
+  if(g.phase==='play'){r(bx-1,by+7,3,1,'#1d172866');r(bx-1,by-arc,2,2,'#f6f1dc');}
+  const label=g.score[0]+' : '+g.score[1];c.font='bold 7px ui-monospace,Consolas,monospace';c.textBaseline='alphabetic';const wlab=Math.ceil(c.measureText(label).width)+8,lx=Math.round(t.x+t.w/2-wlab/2);
+  r(lx,t.y-17,wlab,10,'#2b2634');r(lx+1,t.y-16,wlab-2,8,'#3b4a57');c.fillStyle='#e6e3d3';c.fillText(label,lx+4,t.y-9);
+ }
+}
+function drawOffice(time,delta){
+ const accounts=current?.accounts||[],canvas=$('workspaceCanvas'),candidate=makeOfficeLayout(accounts.length);
+ if(!officeLayout||officeLayout.key!==candidate.key){
+  for(const ui of officeCards.values())officeCancel(ui);
+  officeSpots.clear();officeGroups.clear();officeFx.length=0;for(const m of Object.values(officeMachines)){m.mode='idle';m.owner=null;}
+  officeLayout=candidate;const p=officePalette();officeBackground=buildOfficeBackground(officeLayout,p);
+  canvas.width=officeLayout.width*2;canvas.height=officeLayout.height*2;
+  canvas.dataset.roomSize=officeLayout.width+' × '+officeLayout.height;canvas.dataset.desks=accounts.length;
+  for(const ui of officeCards.values()){ui.station=officeLayout.stations[ui.index];ui.position=null;ui.path=[];ui.destination='desk';ui.restLane=null;ui.say=null;}
+ }
+ const c=canvas.getContext('2d',{alpha:false}),p=officePalette(),moving=!officePaused&&!reducedMotion.matches;
+ officeMoving=moving;if(moving)officeClock+=delta;
+ if(officeTickerUntil&&officeClock>officeTickerUntil)officeTicker('');
+ c.setTransform(2,0,0,2,0,0);c.imageSmoothingEnabled=false;c.drawImage(officeBackground,0,0);
+ const r=(x,y,w,h,color)=>{c.fillStyle=color;c.fillRect(Math.round(x),Math.round(y),w,h);};
+ for(const ui of officeCards.values()){
+  const s=ui.station,working=ui.activity==='working',selected=ui.id===officeSelection,hover=ui.id===officeHover;
+  updateOfficeAgent(ui,time,delta,moving);
+  if(selected||hover){c.strokeStyle=selected?'#d5bbcf':'#ad9ba9';c.lineWidth=1;c.strokeRect(s.x-48,s.y-14,96,72);r(s.x-48,s.y+58,96,2,selected?'#d5bbcf':'#ad9ba9');}
   if(working){
-   r(100,9,12,2,'#d6ead5');r(100,13,17,2,'#b1d3cb');r(100,17,8,2,'#d6ead5');
-   if(step)r(111,17,2,2,'#ece2ba');
-  }else{r(100,11,15,1,'#91a5a8');r(100,15,10,1,'#91a5a8');}
-  r(63,48,15,4,'#806d7c');r(66,52,3,9,'#51445a');r(74,52,3,9,'#51445a');
-  r(139,38,12,9,'#bb917d');r(142,29,6,10,'#6d977e');r(137,33,6,3,'#80a987');r(148,31,5,3,'#80a987');
-  drawPerson(ctx,ui.x,(working?19:21)+(moving&&!working&&step?1:0),ui.color,step,working);
-  r(11,65,17,11,'#322b3d');ctx.fillStyle='#eee6e9';ctx.font='8px monospace';ctx.fillText(String(i+1),17,73);
-  if(recent){r(134,5,2,2,'#e8d09b');r(141,10,2,2,'#e8d09b');}
-  ctx.restore();
- });
- if(!connected)r(0,0,width,height,'#3c344b88');
+   r(s.x-12,s.y-8,27,16,'#648a85');r(s.x-9,s.y-5,8,1,'#d0e3c5');r(s.x+1,s.y-5,9,1,'#a4c5b2');r(s.x-9,s.y-2,16,1,'#b6d2c0');r(s.x-9,s.y+1,10,1,'#d0e3c5');r(s.x-9,s.y+4,13,1,'#a4c5b2');
+   if(!moving||Math.floor(time/450)%2)r(s.x+5,s.y+4,2,2,'#eadcba');r(s.x+31,s.y+26,3,2,'#bfdbb4');
+  }else{r(s.x-8,s.y-3,13,1,'#7e8a99');r(s.x-8,s.y+1,18,1,'#636e80');r(s.x-8,s.y+5,9,1,'#636e80');}
+ }
+ if(moving){officeUpdateGroups(delta);officeUpdateFx(delta);}
+ drawOfficeMachines(c,officeLayout,p);
+ const sorted=[...officeCards.values()].sort((a,b)=>a.position.y-b.position.y||a.index-b.index);
+ for(const ui of sorted){
+  const pos=ui.position,walking=ui.path.length>0,typing=ui.activity==='working'&&!walking,still=!walking&&moving;
+  let pose=walking?null:ui.pose;if(!walking&&officeClock<ui.cheerUntil)pose='cheer';else if(!walking&&officeClock<ui.waveUntil)pose='wave';
+  const talking=!!ui.say?.text&&officeClock>=ui.say.from&&officeClock<ui.say.until,seatedArms=typing||pose==='play';
+  const frame=!moving?0:walking?Math.floor(ui.walkCycle*7)%2:typing?Math.floor(time/180+ui.index)%2:seatedArms?Math.floor(officeClock*7+ui.index)%2:pose==='cheer'||pose==='wave'||pose==='stretch'?Math.floor(officeClock*4+ui.index)%2:talking?Math.floor(officeClock*5+ui.index)%2:0;
+  const direction=pose==='look'&&still?(Math.floor(officeClock/1.3+ui.index)%2?'east':'west'):ui.direction||'north',facing=direction==='west'?-1:1;
+  drawOfficePerson(c,pos.x,pos.y,ui.appearance,direction,frame,seatedArms,{pose,talk:talking});
+  if(!walking)drawOfficeProps(c,{...ui,pose},pos,facing,moving);
+  if(ui.tired&&ui.activity!=='working'&&ui.activity!=='offline'&&!(pose==='nap')){r(pos.x+7,pos.y-31+(moving&&Math.floor(officeClock*2)%2?1:0),2,3,'#8fb4d6');}
+  // Live status is visible during the walk back to the desk as well as while typing.
+  if(ui.activity==='working'){
+   r(pos.x+12,pos.y-43,23,10,p.ink);r(pos.x+14,pos.y-41,19,6,'#88a79a');r(pos.x+13,pos.y-33,4,3,p.ink);
+   for(let i=0;i<3;i++)r(pos.x+18+i*4,pos.y-39,2,2,moving&&(Math.floor(time/300)+i)%3===0?'#eff0d4':'#c2d2b5');
+  }
+  if(ui.id===officeSelection||ui.id===officeHover){r(pos.x-6,pos.y+4,12,2,'#d5bbcf');}
+ }
+ for(const f of officeFx){c.globalAlpha=Math.max(0,Math.min(1,f.life/.4));r(f.x,f.y,f.size,f.size,f.color);}c.globalAlpha=1;
+ for(const ui of sorted){
+  const say=ui.say;if(!say||officeClock<say.from||officeClock>=say.until)continue;
+  drawOfficeBubble(c,ui.position.x,ui.position.y-(ui.activity==='working'?47:ui.pose==='sit'||ui.pose==='nap'?33:37),say,officeLayout.width);
+ }
+ if(!connected&&accounts.length){r(12,70,officeLayout.width-26,officeLayout.height-92,'#27233045');}
 }
-let lastOfficeFrame=0;
+function officeHit(event){
+ if(!officeLayout)return null;const bounds=$('workspaceCanvas').getBoundingClientRect(),x=(event.clientX-bounds.left)/bounds.width*officeLayout.width,y=(event.clientY-bounds.top)/bounds.height*officeLayout.height;
+ let hit=null;
+ for(const ui of officeCards.values())if(ui.position&&Math.abs(x-ui.position.x)<15&&y>ui.position.y-46&&y<ui.position.y+6)hit=ui;
+ if(!hit)for(const ui of officeCards.values()){const s=ui.station;if(s&&Math.abs(x-s.x)<46&&y>s.y-12&&y<s.y+52)hit=ui;}
+ if(hit)return {agent:hit};
+ const zone=officeLayout.zones.find(z=>x>=z.x&&x<=z.x+z.w&&y>=z.y&&y<=z.y+z.h);
+ return zone?{zone}:null;
+}
+$('workspaceCanvas').onpointermove=event=>{
+ const hit=officeHit(event),ui=hit?.agent,zone=hit?.zone,tooltip=$('workspaceTooltip');officeHover=ui?.id||null;officeHoverProp=zone?.kind||null;$('workspaceCanvas').style.cursor=hit?'pointer':'default';tooltip.hidden=!hit;
+ if(hit){const bounds=$('workspaceStage').getBoundingClientRect();tooltip.textContent=ui?'Agent '+String(ui.index+1).padStart(2,'0')+' · '+ui.label+' · '+officeStateLabel(ui):zone.label+' · '+(officeMoving?zone.hint:'Resume motion to use');tooltip.style.left=Math.max(115,Math.min(bounds.width-115,event.clientX-bounds.left))+'px';tooltip.style.top=Math.max(35,event.clientY-bounds.top-12)+'px';}
+};
+$('workspaceCanvas').onpointerleave=()=>{officeHover=null;officeHoverProp=null;$('workspaceTooltip').hidden=true;};
+$('workspaceCanvas').onclick=event=>{
+ const hit=officeHit(event);if(!hit)return;
+ if(hit.zone){officeSendTo(hit.zone.kind);return;}
+ const ui=hit.agent;selectOfficeAgent(ui.id);
+ if(officeMoving&&ui.activity!=='offline'){officeSay(ui,ui.activity==='working'?'Busy typing!':officePick(OFFICE_HELLO),2);ui.waveUntil=officeClock+1.6;}
+};
 function officeLoop(time){
- if(!document.hidden&&time-lastOfficeFrame>110){drawOffice(time);lastOfficeFrame=time;}
+ if(!document.hidden&&time-lastOfficeFrame>=32){const delta=Math.min((time-lastOfficeFrame)/1000,.1);drawOffice(time,delta);lastOfficeFrame=time;}
+ else if(document.hidden)lastOfficeFrame=time;
  requestAnimationFrame(officeLoop);
 }
 function onlineButton(text,cls,fn){const b=el('button',cls,text);b.dataset.online='';b.onclick=fn;return b;}

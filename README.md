@@ -85,7 +85,13 @@ The top Gemini and Claude/GPT summaries show percentages on a **0–100% scale r
 
 Every account also has its own five-hour and weekly bars for both quota pools. Reset countdowns are shown when Google provides a reset time. **Refresh quotas** requests new readings immediately; the pool otherwise refreshes them periodically. The **Routing** label identifies the account preferred for that pool's next request. The login name displayed by `agy` may still be the original account because routing happens inside the local proxy.
 
-The **Account workspace** is one shared pixel-art room that grows into rows as you add accounts. Each saved account has one character and a matching name in the roster. A character moves to its desk and types while that account has a model request in flight; it shows as recently active just after the request finishes. Idle wandering is decorative. These characters visualize routing activity and do not launch independent coding agents. The room respects your theme choice and reduced-motion setting.
+**The office** is one shared pixel-art room that grows into rows as you add accounts.
+
+![Demo office with characters at their desks, playing ping-pong, chatting, and getting coffee](docs/office-demo.jpg)
+
+Each saved account has one character and a matching name in the roster. A character moves to its desk and types while that account has a model request in flight; it says "On it!" when a request starts and celebrates when it finishes. It shows as recently active for a few seconds afterward. A character whose account has low or blocked quota looks tired.
+
+Everything else is **decorative break-time play**: characters fetch coffee from an animated coffee machine, play ping-pong or the arcade cabinet, grab snacks, use the water cooler, nap on the sofa, read, water the plants, visit busy colleagues, and chat in speech bubbles. Click a character, the coffee machine, the ping-pong table, or another prop, or use the **Coffee run**, **Ping-pong**, **Arcade**, and **Chat** buttons, to start an activity. **Chat: on/off** hides speech bubbles. Characters only take breaks while they are idle, and only a real model request ever makes one show as working. These characters visualize routing activity and do not launch independent coding agents. The room respects your theme choice and reduced-motion setting, and **Pause motion** freezes the room while live status keeps updating.
 
 These are **remaining quota percentages, not token counts**. Google's quota response does not provide an absolute token allowance, so the app cannot compute a trustworthy combined token total.
 
